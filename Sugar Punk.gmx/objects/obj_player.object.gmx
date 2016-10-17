@@ -25,7 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ang = 0
+            <string>//&gt;ang
+var i = 0;
+repeat(4){
+    ang[i] = i*90
+    var j = 0;
+    repeat(4){
+        angulo[i,j] = j*90;
+        j++;
+    }
+    i++;
+}
 </string>
           </argument>
         </arguments>
@@ -84,8 +94,22 @@ y+=cim*5;
             <kind>1</kind>
             <string>draw_self()
 
-draw_sprite(spr_overkek,0,x+lengthdir_x(100,ang),y+lengthdir_y(100,ang))
-ang += 3
+var i = 0;
+repeat(4){
+    ang[i] += 3
+    var xx = x+lengthdir_x(100,ang[i]);
+    var yy = y+lengthdir_y(100,ang[i]);
+    draw_sprite(spr_overkek,0,xx,yy);
+    var j = 0;
+    repeat(4){
+        angulo[i,j] -= 3;
+        draw_sprite(spr_overkek,0,xx+lengthdir_x(100,angulo[i,j]),yy+lengthdir_y(100,angulo[i,j]));
+        j++;
+    }
+    i++;
+}
+
+
 </string>
           </argument>
         </arguments>
