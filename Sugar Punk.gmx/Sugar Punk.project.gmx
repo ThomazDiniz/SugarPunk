@@ -8,7 +8,6 @@
   <sprites name="sprites">
     <sprite>sprites\spr_bloco</sprite>
     <sprite>sprites\spr_overkek</sprite>
-    <sprite>sprites\spr_overover</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
