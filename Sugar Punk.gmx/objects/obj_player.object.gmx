@@ -85,6 +85,7 @@ y+=cim*5;
             <string>draw_self()
 
 draw_sprite(spr_overkek,0,x+lengthdir_x(100,ang),y+lengthdir_y(100,ang))
+draw_sprite_ext(spr_overover,0,x+lengthdir_x(100,ang),y+lengthdir_y(100,ang),1,1,0,c_white,lengthdir_x(1,ang))
 ang += 3
 </string>
           </argument>
