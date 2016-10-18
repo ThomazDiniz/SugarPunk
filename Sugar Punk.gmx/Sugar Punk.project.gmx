@@ -25,6 +25,7 @@
         <sprite>sprites\spr_diabetty_left</sprite>
         <sprite>sprites\spr_diabetty_right</sprite>
       </sprites>
+      <sprite>sprites\spr_diabetty_collision</sprite>
       <sprite>sprites\spr_diabetty_attackmask</sprite>
     </sprites>
     <sprites name="Dummy">
@@ -40,6 +41,7 @@
         <sprite>sprites\spr_dummy_move_left</sprite>
         <sprite>sprites\spr_dummy_move_right</sprite>
       </sprites>
+      <sprite>sprites\spr_dummy_collision</sprite>
       <sprite>sprites\spr_dummy_damage</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
