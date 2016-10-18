@@ -11,3 +11,6 @@
     dir = 0;
     cim = 0;
     pai = -1;
+    
+    //Direção que o personagem está "olhando"
+    olha = Baixo

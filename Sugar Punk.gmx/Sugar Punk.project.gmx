@@ -6,6 +6,26 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="Diabetty">
+      <sprites name="Slashing">
+        <sprite>sprites\spr_diabetty_slash_up</sprite>
+        <sprite>sprites\spr_diabetty_slash_down</sprite>
+        <sprite>sprites\spr_diabetty_slash_left</sprite>
+        <sprite>sprites\spr_diabetty_slash_right</sprite>
+      </sprites>
+      <sprites name="Moving">
+        <sprite>sprites\spr_diabetty_move_up</sprite>
+        <sprite>sprites\spr_diabetty_move_down</sprite>
+        <sprite>sprites\spr_diabetty_move_left</sprite>
+        <sprite>sprites\spr_diabetty_move_right</sprite>
+      </sprites>
+      <sprites name="Idle">
+        <sprite>sprites\spr_diabetty_up</sprite>
+        <sprite>sprites\spr_diabetty_down</sprite>
+        <sprite>sprites\spr_diabetty_left</sprite>
+        <sprite>sprites\spr_diabetty_right</sprite>
+      </sprites>
+    </sprites>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_bloco</sprite>
     <sprite>sprites\spr_overkek</sprite>
@@ -18,6 +38,8 @@
     <script>scripts\inicializa_objeto.gml</script>
     <script>scripts\pai_nao_existe.gml</script>
     <script>scripts\depth_atualiza.gml</script>
+    <script>scripts\anima_dir.gml</script>
+    <script>scripts\define_dir.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_controle_player_teclado</object>
@@ -28,12 +50,16 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="5">
+  <constants number="9">
     <constant name="Parado">0</constant>
     <constant name="Anda">1</constant>
     <constant name="Corre">2</constant>
     <constant name="Dash">3</constant>
     <constant name="Ataca">4</constant>
+    <constant name="Cima">10</constant>
+    <constant name="Baixo">11</constant>
+    <constant name="Esquerda">12</constant>
+    <constant name="Direita">13</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

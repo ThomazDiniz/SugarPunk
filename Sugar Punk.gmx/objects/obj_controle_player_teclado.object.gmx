@@ -53,16 +53,22 @@
 dir = 0;
 cim = 0;
 
+//Movimentação
 if keyboard_check(vk_left) || keyboard_check(ord("A")){dir--;}
 if keyboard_check(vk_right) || keyboard_check(ord("D")){dir++;}
 if keyboard_check(vk_up) || keyboard_check(ord("W")){cim--;}
 if keyboard_check(vk_down) || keyboard_check(ord("S")){cim++;}
 
+//Habilidades
+
+//Bater
+bater = keyboard_check_pressed(ord('Z')) || keyboard_check_pressed(ord('O'))
 
 //Se precisar passar esses botoes para outro objeto eh mais facil e deixa o player mais limpo:
 with(pai){
     dir = other.dir;
     cim = other.cim;
+    bater = other.bater
 }
 </string>
           </argument>
