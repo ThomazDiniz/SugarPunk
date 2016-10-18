@@ -6,17 +6,35 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_bloco</sprite>
     <sprite>sprites\spr_overkek</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\movimenta_geral.gml</script>
+    <script>scripts\cria_controle.gml</script>
+    <script>scripts\inicializa_objeto.gml</script>
+    <script>scripts\pai_nao_existe.gml</script>
+    <script>scripts\depth_atualiza.gml</script>
+  </scripts>
   <objects name="objects">
+    <object>objects\obj_controle_player_teclado</object>
     <object>objects\obj_player</object>
+    <object>objects\obj_parede</object>
+    <object>objects\obj_bloco</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
+  <constants number="5">
+    <constant name="Parado">0</constant>
+    <constant name="Anda">1</constant>
+    <constant name="Corre">2</constant>
+    <constant name="Dash">3</constant>
+    <constant name="Ataca">4</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
