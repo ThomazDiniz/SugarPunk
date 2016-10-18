@@ -25,6 +25,22 @@
         <sprite>sprites\spr_diabetty_left</sprite>
         <sprite>sprites\spr_diabetty_right</sprite>
       </sprites>
+      <sprite>sprites\spr_diabetty_attackmask</sprite>
+    </sprites>
+    <sprites name="Dummy">
+      <sprites name="Idle">
+        <sprite>sprites\spr_dummy_up</sprite>
+        <sprite>sprites\spr_dummy_down</sprite>
+        <sprite>sprites\spr_dummy_right</sprite>
+        <sprite>sprites\spr_dummy_left</sprite>
+      </sprites>
+      <sprites name="Move">
+        <sprite>sprites\spr_dummy_move_up</sprite>
+        <sprite>sprites\spr_dummy_move_down</sprite>
+        <sprite>sprites\spr_dummy_move_left</sprite>
+        <sprite>sprites\spr_dummy_move_right</sprite>
+      </sprites>
+      <sprite>sprites\spr_dummy_damage</sprite>
     </sprites>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_bloco</sprite>
@@ -40,22 +56,33 @@
     <script>scripts\depth_atualiza.gml</script>
     <script>scripts\anima_dir.gml</script>
     <script>scripts\define_dir.gml</script>
+    <script>scripts\auto_dir.gml</script>
+    <script>scripts\colideAFrente.gml</script>
+    <script>scripts\ataca.gml</script>
+    <script>scripts\get_dir.gml</script>
+    <script>scripts\cria_hitbox.gml</script>
+    <script>scripts\debuga_estado.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_controle_player_teclado</object>
     <object>objects\obj_player</object>
+    <object>objects\ef_dano</object>
+    <object>objects\obj_dummy</object>
     <object>objects\obj_parede</object>
     <object>objects\obj_bloco</object>
+    <object>objects\obj_attackmask</object>
+    <object>objects\obj_hitbox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="9">
+  <constants number="10">
     <constant name="Parado">0</constant>
     <constant name="Anda">1</constant>
     <constant name="Corre">2</constant>
     <constant name="Dash">3</constant>
     <constant name="Ataca">4</constant>
+    <constant name="Dano">5</constant>
     <constant name="Cima">10</constant>
     <constant name="Baixo">11</constant>
     <constant name="Esquerda">12</constant>
