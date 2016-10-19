@@ -55,8 +55,9 @@ cria_hitbox();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Movimentação
+            <string>///Estados e movimentacao
 
+//Movimentacao basica
 vx+=dir;
 vy+=cim;
 vx = clamp(vx,-5,5);
@@ -64,53 +65,32 @@ vy = clamp(vy,-5,5);
 vx*=0.8;
 vy*=0.8;
 
-movimenta_geral(vx,vy);
 
-
-depth_atualiza();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Estados
-
+//Estado Principal
 switch Estado {
-
     case Parado:
-    if dir != 0 || cim != 0 {
-        Estado = Anda;
-    }
-    ataca()
+        if dir != 0 || cim != 0 {Estado = Anda;}
+        ataca();
     break;
     
     case Anda:
-    if dir == 0 &amp;&amp; cim == 0 {
-        Estado = Parado;
-    }
-    ataca()
+        if dir == 0 &amp;&amp; cim == 0 {Estado = Parado;}
+        movimenta_geral(vx,vy);
+        define_dir();
+        ataca();
     break;
     
     case Ataca:
         //Altera o estado no animation end
+        ataca();
+        movimenta_geral(vx*0.1,vy*0.1);
     break;
 
 }
+
+
+depth_atualiza();
+
 </string>
           </argument>
         </arguments>
@@ -133,10 +113,11 @@ switch Estado {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch Estado {
-    
+            <string>
+switch Estado {
     case Ataca:
         Estado = Parado;
+        ataque = 0;
     break;
 }
 </string>
@@ -164,7 +145,6 @@ switch Estado {
             <string>///Desenha sprite
 
 image_speed = 0.3;
-define_dir();
 
 switch Estado {
 
@@ -176,9 +156,20 @@ switch Estado {
         auto_dir("spr_diabetty_move");
     break;
     
-    case Ataca:
-        image_speed = 0.4
-        auto_dir("spr_diabetty_slash");
+    case Ataca: 
+        //Um jeito bom de controlar a animacao é você utilizar porcentagem
+        //as primeiras animacoes normalmente sao mais rapidas
+        //e eh quando a hitbox esta ativa
+        //depois de 60% da animacao ela fica devagar para poder continuar o combo
+        //se n tivesse isso ele acabava a animacao e fodase
+        if image_index &gt; image_number *0.8{
+            image_speed = 0.05;
+        } else if image_index &gt; 0.6{
+            image_speed = 0.2;
+        }else{
+            image_speed = 0.4;
+        }
+        auto_dir("spr_diabetty_slash" + string(ataque));
     break;
 
 }
@@ -205,7 +196,12 @@ draw_self()
           <argument>
             <kind>1</kind>
             <string>///Debugs
-//Nada por aqui.... por enquanto.
+//Agora tem
+
+draw_text(100,100,Estado);
+draw_text(150,100,ataque);
+draw_text(200,100,image_index);
+
 
 
 </string>

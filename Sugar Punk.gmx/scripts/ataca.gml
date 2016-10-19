@@ -3,7 +3,14 @@
 //Transita pro estado de atacar
 var mask;
 
-if bater {
+if (bater && (ataque < 3)){
+    
+    //teste para não trocar rapidamente de uma imagem para outra do combo
+    if (ataque >= 1) && (image_index < image_number*0.8){return false;}
+    
+    //Toda vez que atacar eh bom definir a dir
+    define_dir();
+    
     //ajuste da origem, o objeto attackmask precisa girar com o eixo no centro para
     //funcionar, e o eixo do player é mais perto dos pés
     var xx = x + 2;
@@ -18,5 +25,6 @@ if bater {
     
     //Ajustando o image_index para mostrar animação completa
     image_index = 0;
+    ataque++;
 }
 

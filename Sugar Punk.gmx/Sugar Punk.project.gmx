@@ -7,12 +7,6 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="Diabetty">
-      <sprites name="Slashing">
-        <sprite>sprites\spr_diabetty_slash_up</sprite>
-        <sprite>sprites\spr_diabetty_slash_down</sprite>
-        <sprite>sprites\spr_diabetty_slash_left</sprite>
-        <sprite>sprites\spr_diabetty_slash_right</sprite>
-      </sprites>
       <sprites name="Moving">
         <sprite>sprites\spr_diabetty_move_up</sprite>
         <sprite>sprites\spr_diabetty_move_down</sprite>
@@ -27,6 +21,24 @@
       </sprites>
       <sprite>sprites\spr_diabetty_collision</sprite>
       <sprite>sprites\spr_diabetty_attackmask</sprite>
+      <sprites name="Slashing">
+        <sprite>sprites\spr_diabetty_slash1_up</sprite>
+        <sprite>sprites\spr_diabetty_slash1_down</sprite>
+        <sprite>sprites\spr_diabetty_slash1_left</sprite>
+        <sprite>sprites\spr_diabetty_slash1_right</sprite>
+      </sprites>
+      <sprites name="Slashing2">
+        <sprite>sprites\spr_diabetty_slash2_up</sprite>
+        <sprite>sprites\spr_diabetty_slash2_right</sprite>
+        <sprite>sprites\spr_diabetty_slash2_left</sprite>
+        <sprite>sprites\spr_diabetty_slash2_down</sprite>
+      </sprites>
+      <sprites name="Slashing 3">
+        <sprite>sprites\spr_diabetty_slash3_right</sprite>
+        <sprite>sprites\spr_diabetty_slash3_left</sprite>
+        <sprite>sprites\spr_diabetty_slash3_down</sprite>
+        <sprite>sprites\spr_diabetty_slash3_up</sprite>
+      </sprites>
     </sprites>
     <sprites name="Dummy">
       <sprites name="Idle">
@@ -66,13 +78,21 @@
     <script>scripts\debuga_estado.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_controle_player_teclado</object>
-    <object>objects\obj_player</object>
-    <object>objects\ef_dano</object>
-    <object>objects\obj_dummy</object>
-    <object>objects\obj_parede</object>
-    <object>objects\obj_bloco</object>
+    <objects name="Player">
+      <object>objects\obj_player</object>
+    </objects>
+    <objects name="Efeitos">
+      <object>objects\ef_dano</object>
+    </objects>
+    <objects name="Controles">
+      <object>objects\obj_controle_player_teclado</object>
+    </objects>
+    <objects name="Colisores">
+      <object>objects\obj_parede</object>
+      <object>objects\obj_bloco</object>
+    </objects>
     <object>objects\obj_attackmask</object>
+    <object>objects\obj_dummy</object>
     <object>objects\obj_hitbox</object>
   </objects>
   <rooms name="rooms">
