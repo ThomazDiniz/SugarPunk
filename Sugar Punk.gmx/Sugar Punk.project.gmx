@@ -88,6 +88,7 @@
       <object>objects\obj_controle_player_teclado</object>
     </objects>
     <objects name="Colisores">
+      <object>objects\Colide</object>
       <object>objects\obj_parede</object>
       <object>objects\obj_bloco</object>
     </objects>
@@ -105,10 +106,10 @@
     <constant name="Dash">3</constant>
     <constant name="Ataca">4</constant>
     <constant name="Dano">5</constant>
-    <constant name="Cima">10</constant>
-    <constant name="Baixo">11</constant>
-    <constant name="Esquerda">12</constant>
-    <constant name="Direita">13</constant>
+    <constant name="Cima">1</constant>
+    <constant name="Baixo">3</constant>
+    <constant name="Esquerda">2</constant>
+    <constant name="Direita">0</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

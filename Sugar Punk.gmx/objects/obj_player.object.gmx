@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Colide</parentName>
   <maskName>spr_diabetty_collision</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -69,12 +69,12 @@ vy*=0.8;
 //Estado Principal
 switch Estado {
     case Parado:
-        if dir != 0 || cim != 0 {Estado = Anda;}
+        if (dir != 0 || cim != 0) {Estado = Anda;}
         ataca();
     break;
     
     case Anda:
-        if dir == 0 &amp;&amp; cim == 0 {Estado = Parado;}
+        if (dir == 0 &amp;&amp; cim == 0) {Estado = Parado;}
         movimenta_geral(vx,vy);
         define_dir();
         ataca();
@@ -83,7 +83,15 @@ switch Estado {
     case Ataca:
         //Altera o estado no animation end
         ataca();
-        movimenta_geral(vx*0.1,vy*0.1);
+        var vel = (image_number - image_index)/image_number;
+        var sp = 2;
+        var dx = (vx+lengthdir_x(sp,olha*90))*vel;
+        var dy = (vy+lengthdir_y(sp,olha*90))*vel;
+        
+        dx = clamp(dx,-sp,sp);
+        dy = clamp(dy,-sp,sp);
+        
+        movimenta_geral(dx,dy);
     break;
 
 }
@@ -163,7 +171,8 @@ switch Estado {
         //depois de 60% da animacao ela fica devagar para poder continuar o combo
         //se n tivesse isso ele acabava a animacao e fodase
         if image_index &gt; image_number *0.8{
-            image_speed = 0.05;
+            image_speed = 0.03;
+            if (ataque = 3){image_speed = 0.06;}
         } else if image_index &gt; 0.6{
             image_speed = 0.2;
         }else{

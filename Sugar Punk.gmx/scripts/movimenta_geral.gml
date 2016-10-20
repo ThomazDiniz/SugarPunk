@@ -15,22 +15,22 @@ var sy = sign(vy);
 
 
 if sx!=0{
-    if !place_meeting(x+vx,y,obj_bloco){
+    if !place_meeting(x+vx,y,Colide){
         x+=vx;
     }else{
         repeat(ceil(vx)){
-            if !place_meeting(x+sx,y,obj_bloco){x+=sx}else{break;}   
+            if !place_meeting(x+sx,y,Colide){x+=sx}else{break;}   
         }
     }
 }
 
 
 if (sy!=0){
-    if !place_meeting(x,y+vy,obj_bloco){
+    if !place_meeting(x,y+vy,Colide){
         y+=vy;
     }else{
         repeat(ceil(vy)){
-            if !place_meeting(x,y+sy,obj_bloco){y+=sy}else{break;}   
+            if !place_meeting(x,y+sy,Colide){y+=sy}else{break;}   
         }
     }
 }
