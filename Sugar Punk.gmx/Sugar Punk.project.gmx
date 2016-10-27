@@ -72,6 +72,7 @@
     <script>scripts\define_dir.gml</script>
     <script>scripts\auto_dir.gml</script>
     <script>scripts\colideAFrente.gml</script>
+    <script>scripts\cria_attack_mask.gml</script>
     <script>scripts\ataca.gml</script>
     <script>scripts\get_dir.gml</script>
     <script>scripts\cria_hitbox.gml</script>
@@ -82,6 +83,7 @@
       <object>objects\obj_player</object>
     </objects>
     <objects name="Efeitos">
+      <object>objects\ef_trava</object>
       <object>objects\ef_dano</object>
     </objects>
     <objects name="Controles">
