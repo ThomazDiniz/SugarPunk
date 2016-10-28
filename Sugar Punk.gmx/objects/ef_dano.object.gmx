@@ -28,8 +28,8 @@
             <string>image_alpha = 0.3
 image_speed = 0.2
 
+trava_tela(5);
 
-instance_create(0,0,ef_trava);
 </string>
           </argument>
         </arguments>

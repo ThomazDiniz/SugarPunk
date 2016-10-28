@@ -76,6 +76,7 @@
     <script>scripts\ataca.gml</script>
     <script>scripts\get_dir.gml</script>
     <script>scripts\cria_hitbox.gml</script>
+    <script>scripts\trava_tela.gml</script>
     <script>scripts\debuga_estado.gml</script>
   </scripts>
   <objects name="objects">
