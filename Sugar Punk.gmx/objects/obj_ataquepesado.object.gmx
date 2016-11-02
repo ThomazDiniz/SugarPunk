@@ -25,13 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>inicializa_objeto();
+            <string>///Raio do circulo de efeitos visuais
+raio = 0;
+
+//Screenshake obrigatório
+milkshaker(6);
+
+//Testando colisão com dummies
+with obj_dummy {
+    //Checa se a distância está abaixo do necessário.
+    //É uma espécie de collision_circle mas que checa todas as instâncias
+    //dentro dele ao invés de só uma
+    var dist = point_distance(x,y,other.x,other.y);
+    if dist  &lt; 150 {
+        pai.Estado = Dano;
+        dano = instance_create(x,y,ef_dano);
+        dano.pai = id;
+        direction =  point_direction(other.x,other.y,x,y)
+        speed = 50 - point_distance(x,y,other.x,other.y)/3
+    } 
+}
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,30 +68,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Codigo dos controles
+            <string>///Efeitos visuais
 
-dir = 0;
-cim = 0;
+//Circulo maneiro que dá um efeito doido
+var alp = 1 - raio/200;
 
-//Movimentação
-if keyboard_check(vk_left) || keyboard_check(ord("A")){dir--;}
-if keyboard_check(vk_right) || keyboard_check(ord("D")){dir++;}
-if keyboard_check(vk_up) || keyboard_check(ord("W")){cim--;}
-if keyboard_check(vk_down) || keyboard_check(ord("S")){cim++;}
+draw_set_color(c_red);
+draw_set_alpha(alp);
+    draw_circle(x,y,raio,true);
+    raio += 10;
+draw_set_alpha(1);
 
-//Habilidades
-
-//Bater
-bater = keyboard_check_pressed(ord('Z')) || keyboard_check_pressed(ord('O'))
-bater_direct = keyboard_check(ord('Z')) || keyboard_check(ord('O'))
-
-//Se precisar passar esses botoes para outro objeto eh mais facil e deixa o player mais limpo:
-with(pai){
-    dir = other.dir;
-    cim = other.cim;
-    bater = other.bater
-    bater_direct = other.bater_direct
+if alp &lt; 0 {
+    instance_destroy();
 }
+
 </string>
           </argument>
         </arguments>

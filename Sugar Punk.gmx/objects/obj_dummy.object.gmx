@@ -153,8 +153,17 @@ switch Estado {
         Estado = Parado;
     }
     break;
+    
+    case Dano:
+        //Bounce provisório pra dar um efeito maneiro durante o ataque pesado
+        //Só funciona com o ataque pesado
+        move_bounce_solid(true);
+    break;
 
 }
+
+//Diminui a speed do bounce
+speed *= 0.9;
 </string>
           </argument>
         </arguments>
@@ -223,6 +232,7 @@ draw_self();
             <string>///Debugs
 //Nada por aqui.... por enquanto.
 
+draw_text(x,y,Estado)
 </string>
           </argument>
         </arguments>

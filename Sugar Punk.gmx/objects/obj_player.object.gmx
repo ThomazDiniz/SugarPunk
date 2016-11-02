@@ -30,6 +30,9 @@ cria_controle();
 
 cria_hitbox();
 
+//Contador que define quantos steps são necessários pra dar o ataque pesado
+carrega_max = 100
+carrega = carrega_max
 
 
 
@@ -83,7 +86,17 @@ switch Estado {
     case Ataca:
         //Altera o estado no animation end
         ataca();
-        movimenta_geral(vx*0.1,vy*0.1);
+        movimenta_geral(vx*0.3,vy*0.3);
+    break;
+    
+    case AtacaPesado:
+        if !bater_direct {
+            Estado = Parado;
+            var xx = x + lengthdir_x(50,get_dir());
+            var yy = y + lengthdir_y(50,get_dir());
+            instance_create(xx,yy,obj_ataquepesado);
+        }
+        movimenta_geral(vx*0.3,vy*0.3);
     break;
 
 }
@@ -116,8 +129,16 @@ depth_atualiza();
             <string>
 switch Estado {
     case Ataca:
-        Estado = Parado;
-        ataque = 0;
+        //Caso esteja segurando o botão, muda para o ataque pesado, caso contrário
+        //volta pro parado
+        if !bater_direct {
+            Estado = Parado;
+            ataque = 0;
+        }
+        else {
+            Estado = AtacaPesado;
+            ataque = 0;
+        }
     break;
 }
 </string>
@@ -171,6 +192,10 @@ switch Estado {
         }
         auto_dir("spr_diabetty_slash" + string(ataque));
     break;
+    
+    case AtacaPesado:
+        image_index = sprite_get_number(sprite_index)-1
+    break;
 
 }
 
@@ -201,6 +226,7 @@ draw_self()
 draw_text(100,100,Estado);
 draw_text(150,100,ataque);
 draw_text(200,100,image_index);
+
 
 
 
