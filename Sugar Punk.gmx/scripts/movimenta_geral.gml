@@ -13,6 +13,12 @@ var cy = false;
 var sx = sign(vx);
 var sy = sign(vy);
 
+if !podeColidir{//Por enquanto é só isso, mas depois que tivermos montes e coisas do tipo a gente coloca esse código para ser impedido por objetos do tipo não ultrapassa em nenhuma hipótese.
+    x+=vx;
+    y+=vy;
+    return 0;
+}
+
 
 if sx!=0{
     if !place_meeting(x+vx,y,Colide){

@@ -67,17 +67,20 @@ vx = clamp(vx,-5,5);
 vy = clamp(vy,-5,5);
 vx*=0.8;
 vy*=0.8;
-
+podeColidir = true;
 
 //Estado Principal
-switch Estado {
+switch (Estado) {
     case Parado:
         if (dir != 0 || cim != 0) {Estado = Anda;}
+        if pula {Estado = Pula;vz = -10;}
         ataca();
     break;
     
+    
     case Anda:
         if (dir == 0 &amp;&amp; cim == 0) {Estado = Parado;}
+        if pula {Estado = Pula;vz = -10;}
         movimenta_geral(vx,vy);
         define_dir();
         ataca();
@@ -99,7 +102,7 @@ switch Estado {
     
     
     case AtacaPesado:
-        if !bater_direct {
+        if (!bater_direct) {
             Estado = Parado;
             var xx = x + lengthdir_x(50,get_dir());
             var yy = y + lengthdir_y(50,get_dir());
@@ -107,9 +110,21 @@ switch Estado {
         }
         movimenta_geral(vx*0.3,vy*0.3);
     break;
+    
+    case Pula:
+        podeColidir = false;
+        define_dir();
+        movimenta_geral(vx,vy);
+        if (pulando &amp;&amp; vz &gt; 3){vz = 3;}
+        vz+=0.45;
+        z+=vz;        
+        if z&gt;=0{z = 0;}
+        if (z == 0)&amp;&amp;!place_meeting(x,y,Colide){z = 0;Estado = Parado;}
+    break;
 }
 
 depth_atualiza();
+
 
 </string>
           </argument>
@@ -188,6 +203,7 @@ switch Estado {
         //Um jeito bom de controlar a animacao é você utilizar porcentagem
         //as primeiras animacoes normalmente sao mais rapidas
         //e eh quando a hitbox esta ativa
+    
         //depois de 60% da animacao ela fica devagar para poder continuar o combo
         //se n tivesse isso ele acabava a animacao e fodase
         if image_index &gt; image_number *0.8{
@@ -205,9 +221,22 @@ switch Estado {
         image_index = sprite_get_number(sprite_index)-1
     break;
 
+    case Pula:
+        auto_dir("spr_diabetty");       
+    break;
 }
+    //desenha só para saber onde o player está é um círculo simples
+draw_set_alpha(0.3);
+draw_set_colour(c_black);
+    draw_circle(x,y,10,false);
+draw_set_alpha(1);
 
-draw_self()
+    //Muda a posição de desenho e depois volta pra original
+    
+Y = y;
+y = y+z;
+    draw_self();
+y=Y;
 </string>
           </argument>
         </arguments>

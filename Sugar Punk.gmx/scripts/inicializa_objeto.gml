@@ -4,7 +4,6 @@
 //em todos os objetos e para nao add um por um isso daqui ja vai quebrar um galho
 //mesmo os que nao necessitam de depth ou nem sao desenhados
 
-    depth_atualiza();
     Estado = Parado;
     vx = 0;
     vy = 0;
@@ -12,5 +11,17 @@
     cim = 0;
     pai = -1;
     ataque = 0;
+    
     //Direção que o personagem está "olhando"
     olha = Baixo
+    
+    //Variável utilizada para pulo
+    pula = false;
+    pulando = false;
+    z = 0;
+    vz = 0;
+    podeColidir = true;
+    Y = 0;    
+    
+    depth_atualiza();
+    

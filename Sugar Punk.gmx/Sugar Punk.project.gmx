@@ -112,7 +112,7 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="11">
+  <constants number="12">
     <constant name="Parado">0</constant>
     <constant name="Anda">1</constant>
     <constant name="Corre">2</constant>
@@ -120,6 +120,7 @@
     <constant name="Ataca">4</constant>
     <constant name="Dano">5</constant>
     <constant name="AtacaPesado">6</constant>
+    <constant name="Pula">7</constant>
     <constant name="Cima">1</constant>
     <constant name="Baixo">3</constant>
     <constant name="Esquerda">2</constant>
