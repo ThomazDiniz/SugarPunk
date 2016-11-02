@@ -11,9 +11,6 @@ if (bater && (ataque < 3)){
     //Toda vez que atacar eh bom definir a dir
     define_dir();
     
-    
-    
-    
     cria_attack_mask();
     Estado = Ataca;
     
@@ -21,4 +18,3 @@ if (bater && (ataque < 3)){
     image_index = 0;
     ataque++;
 }
-
