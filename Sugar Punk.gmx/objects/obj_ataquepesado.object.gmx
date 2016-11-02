@@ -32,7 +32,7 @@ raio = 0;
 milkshaker(6);
 
 //Testando colisão com dummies
-with obj_dummy {
+with (obj_dummy){
     //Checa se a distância está abaixo do necessário.
     //É uma espécie de collision_circle mas que checa todas as instâncias
     //dentro dele ao invés de só uma
@@ -41,8 +41,8 @@ with obj_dummy {
         pai.Estado = Dano;
         dano = instance_create(x,y,ef_dano);
         dano.pai = id;
-        direction =  point_direction(other.x,other.y,x,y)
-        speed = 50 - point_distance(x,y,other.x,other.y)/3
+        direction =  point_direction(other.x,other.y,x,y);
+        speed = 50 - point_distance(x,y,other.x,other.y)/3;
     } 
 }
 

@@ -2,9 +2,12 @@
 
 //Retorna o valor da constante de direção em formato de ângulo
 
+    return olha*90;
+
+/*
 var ang;
 
-switch olha {
+switch (olha) {
     
     case Cima:
         ang = 90;

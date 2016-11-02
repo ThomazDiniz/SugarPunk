@@ -8,6 +8,30 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>podeTomarDano = true;
+ultimoAtaque = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,9 +49,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Olha que interessante
-//Por algum motivo precisa comentar o código do alarme para ele
-//funcionar
+            <string>podeTomarDano = true;
 </string>
           </argument>
         </arguments>
@@ -80,15 +102,17 @@ mask_index = pai.sprite_index;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Checa se o attackmask não é do objeto pai
-if other.pai != pai &amp;&amp; alarm[1] == -1 {
+            <string>///Checa se o attackmask não é do objeto pai
+if ((ultimoAtaque == -1) || !instance_exists(ultimoAtaque)){podeTomarDano=true;}
+if ((other.pai != pai) &amp;&amp; (podeTomarDano)){
     pai.Estado = Dano;
     dano = instance_create(x,y,ef_dano);
     dano.pai = pai;
     dano.depth = pai.depth-1;
     
     //Alarme para não criar um milhão de ef_danos
-    alarm[1] = 5;
+    podeTomarDano = false;
+    ultimoAtaque = other.id;
 } 
 </string>
           </argument>
