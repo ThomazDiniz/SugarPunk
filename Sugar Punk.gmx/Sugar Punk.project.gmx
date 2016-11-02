@@ -72,9 +72,11 @@
     <script>scripts\define_dir.gml</script>
     <script>scripts\auto_dir.gml</script>
     <script>scripts\colideAFrente.gml</script>
+    <script>scripts\cria_attack_mask.gml</script>
     <script>scripts\ataca.gml</script>
     <script>scripts\get_dir.gml</script>
     <script>scripts\cria_hitbox.gml</script>
+    <script>scripts\trava_tela.gml</script>
     <script>scripts\debuga_estado.gml</script>
     <script>scripts\ataca_pesado.gml</script>
     <script>scripts\milkshaker.gml</script>
@@ -84,12 +86,14 @@
       <object>objects\obj_player</object>
     </objects>
     <objects name="Efeitos">
+      <object>objects\ef_trava</object>
       <object>objects\ef_dano</object>
     </objects>
     <objects name="Controles">
       <object>objects\obj_controle_player_teclado</object>
     </objects>
     <objects name="Colisores">
+      <object>objects\Colide</object>
       <object>objects\obj_parede</object>
       <object>objects\obj_bloco</object>
     </objects>
