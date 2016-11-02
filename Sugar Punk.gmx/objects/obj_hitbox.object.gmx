@@ -81,14 +81,14 @@ mask_index = pai.sprite_index;
           <argument>
             <kind>1</kind>
             <string>//Checa se o attackmask não é do objeto pai
-if other.pai != pai &amp;&amp; alarm[0] == -1 {
+if other.pai != pai &amp;&amp; alarm[1] == -1 {
     pai.Estado = Dano;
     dano = instance_create(x,y,ef_dano);
     dano.pai = pai;
     dano.depth = pai.depth-1;
     
     //Alarme para não criar um milhão de ef_danos
-    alarm[0] = 5;
+    alarm[1] = 5;
 } 
 </string>
           </argument>
