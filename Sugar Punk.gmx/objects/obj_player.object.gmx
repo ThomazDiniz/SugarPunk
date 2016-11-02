@@ -97,6 +97,7 @@ switch Estado {
         movimenta_geral(dx,dy);
     break;
     
+    
     case AtacaPesado:
         if !bater_direct {
             Estado = Parado;
@@ -106,9 +107,7 @@ switch Estado {
         }
         movimenta_geral(vx*0.3,vy*0.3);
     break;
-
 }
-
 
 depth_atualiza();
 

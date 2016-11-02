@@ -19,8 +19,14 @@
         <sprite>sprites\spr_diabetty_left</sprite>
         <sprite>sprites\spr_diabetty_right</sprite>
       </sprites>
-      <sprite>sprites\spr_diabetty_collision</sprite>
       <sprite>sprites\spr_diabetty_attackmask</sprite>
+      <sprite>sprites\spr_diabetty_collision</sprite>
+      <sprites name="Charging">
+        <sprite>sprites\spr_diabetty_charge_left</sprite>
+        <sprite>sprites\spr_diabetty_charge_right</sprite>
+        <sprite>sprites\spr_diabetty_charge_down</sprite>
+        <sprite>sprites\spr_diabetty_charge_up</sprite>
+      </sprites>
       <sprites name="Slashing">
         <sprite>sprites\spr_diabetty_slash1_up</sprite>
         <sprite>sprites\spr_diabetty_slash1_down</sprite>
