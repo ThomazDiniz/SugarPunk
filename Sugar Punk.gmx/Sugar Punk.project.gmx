@@ -86,6 +86,7 @@
     <script>scripts\debuga_estado.gml</script>
     <script>scripts\ataca_pesado.gml</script>
     <script>scripts\milkshaker.gml</script>
+    <script>scripts\scr_trace.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">
@@ -94,6 +95,7 @@
     <objects name="Efeitos">
       <object>objects\ef_trava</object>
       <object>objects\ef_dano</object>
+      <object>objects\ef_tracing</object>
     </objects>
     <objects name="Controles">
       <object>objects\obj_controle_player_teclado</object>
@@ -112,7 +114,7 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="12">
+  <constants number="13">
     <constant name="Parado">0</constant>
     <constant name="Anda">1</constant>
     <constant name="Corre">2</constant>
@@ -120,6 +122,7 @@
     <constant name="Ataca">4</constant>
     <constant name="Dano">5</constant>
     <constant name="AtacaPesado">6</constant>
+    <constant name="CaiPesado">8</constant>
     <constant name="Pula">7</constant>
     <constant name="Cima">1</constant>
     <constant name="Baixo">3</constant>

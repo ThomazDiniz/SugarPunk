@@ -112,6 +112,9 @@ switch (Estado) {
     break;
     
     case Pula:
+        if bater {
+            Estado = CaiPesado;     
+        }
         podeColidir = false;
         define_dir();
         movimenta_geral(vx,vy);
@@ -120,6 +123,21 @@ switch (Estado) {
         z+=vz;        
         if z&gt;=0{z = 0;}
         if (z == 0)&amp;&amp;!place_meeting(x,y,Colide){z = 0;Estado = Parado;}
+    break;
+    
+    case CaiPesado:
+        podeColidir = false;
+        //define_dir();
+        //movimenta_geral(vx,vy);
+        if (pulando &amp;&amp; vz &gt; 3){vz = 3;}
+        vz+=1.1;
+        z+=vz;        
+        if z&gt;=0{z = 0;}
+        if (z == 0)&amp;&amp;!place_meeting(x,y,Colide){
+            z = 0;
+            instance_create(x,y,obj_ataquepesado)
+            Estado = Parado;
+        }
     break;
 }
 
@@ -235,6 +253,10 @@ draw_set_alpha(1);
     
 Y = y;
 y = y+z;
+    //Efeito maneiro quando cai
+    if Estado == CaiPesado {
+        scr_trace()
+    }
     draw_self();
 y=Y;
 </string>
