@@ -31,8 +31,8 @@ cria_controle();
 cria_hitbox();
 
 //Contador que define quantos steps são necessários pra dar o ataque pesado
-carrega_max = 100
-carrega = carrega_max
+carrega_max = 100;
+carrega = carrega_max;
 
 
 
@@ -63,16 +63,18 @@ carrega = carrega_max
 //Movimentacao basica
 vx+=dir;
 vy+=cim;
-vx = clamp(vx,-5,5);
-vy = clamp(vy,-5,5);
+vx = clamp(vx,-velMax,velMax);
+vy = clamp(vy,-velMax,velMax);
 vx*=0.8;
 vy*=0.8;
 podeColidir = true;
-
+var estado = Estado;
 //Estado Principal
 switch (Estado) {
     case Parado:
+        pulaDash = false;
         if (dir != 0 || cim != 0) {Estado = Anda;}
+        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
         if pula {Estado = Pula;vz = -10;}
         ataca();
     break;
@@ -81,9 +83,35 @@ switch (Estado) {
     case Anda:
         if (dir == 0 &amp;&amp; cim == 0) {Estado = Parado;}
         if pula {Estado = Pula;vz = -10;}
+        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
         movimenta_geral(vx,vy);
         define_dir();
         ataca();
+    break;
+    
+    case Dash:
+        if (dashDir == 0) &amp;&amp; (dashCim == 0){
+            dashDir = lengthdir_x(2,get_dir());
+            dashCim = lengthdir_y(2,get_dir());
+        }
+        
+        if (contador_conta(20)){
+            dashou = true;
+            if z!=0{
+                vz = 0;
+                Estado = Pula;
+            } else {
+                Estado = Parado;
+            }
+        }
+        if z!=0{
+            podeColidir = false;
+        }else{
+            if pula {Estado = Pula;vz = -10;pulaDash = true;}
+            ataca();
+        }
+        movimenta_geral(dashDir*velMax,dashCim*velMax);
+        
     break;
     
     case Ataca:
@@ -110,15 +138,20 @@ switch (Estado) {
         }
         movimenta_geral(vx*0.3,vy*0.3);
     break;
+    
     case Pula:
         podeColidir = false;
         define_dir();
-        movimenta_geral(vx,vy);
+        var mult = 1;
+        if pulaDash{mult = 2;}
+        movimenta_geral(vx*mult,vy*mult);
         if (pulando &amp;&amp; vz &gt; 3){vz = 3;}
         vz+=0.45;
-        z+=vz;        
+        z+=vz;      
+        if z &gt; 0{z = 0;}  
         if (z &gt;= 0){z = 0;if (!place_meeting(x,y,Colide)){Estado = Parado;}} 
         if (z &lt; 0) &amp;&amp; (bater){Estado = CaiPesado;}
+        if (dash &amp;&amp; !dashou){Estado = Dash;dashDir = dir*2; dashCim = cim*2;z-=0.1;}
     break;
     
     case CaiPesado:
@@ -139,7 +172,10 @@ switch (Estado) {
 }
 
 depth_atualiza();
+player_nos_limites_da_view();
 
+if estado!=Estado{contador_zera();}
+if (Estado != Pula &amp;&amp; Estado != Dash){dashou = false;}
 
 </string>
           </argument>
@@ -251,7 +287,7 @@ draw_set_alpha(1);
 Y = y;
 y = y+z;
     //Efeito maneiro quando cai
-    if Estado == CaiPesado {
+    if (Estado == CaiPesado || Estado == Dash || (Estado == Pula &amp;&amp; pulaDash)){
         scr_trace();
     }
     draw_self();

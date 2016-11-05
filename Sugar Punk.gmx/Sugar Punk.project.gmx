@@ -65,6 +65,7 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_bloco</sprite>
     <sprite>sprites\spr_overkek</sprite>
+    <sprite>sprites\spr_kekover</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -85,7 +86,10 @@
     <script>scripts\trava_tela.gml</script>
     <script>scripts\debuga_estado.gml</script>
     <script>scripts\ataca_pesado.gml</script>
+    <script>scripts\player_nos_limites_da_view.gml</script>
     <script>scripts\milkshaker.gml</script>
+    <script>scripts\contador_conta.gml</script>
+    <script>scripts\contador_zera.gml</script>
     <script>scripts\scr_trace.gml</script>
   </scripts>
   <objects name="objects">
@@ -101,7 +105,9 @@
       <object>objects\obj_controle_player_teclado</object>
     </objects>
     <objects name="Colisores">
+      <object>objects\nao_atravessa</object>
       <object>objects\Colide</object>
+      <object>objects\obj_limite</object>
       <object>objects\obj_parede</object>
       <object>objects\obj_bloco</object>
     </objects>

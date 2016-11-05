@@ -12,6 +12,7 @@
     pai = -1;
     ataque = 0;
     
+    
     //Direção que o personagem está "olhando"
     olha = Baixo
     
@@ -23,5 +24,15 @@
     podeColidir = true;
     Y = 0;    
     
-    depth_atualiza();
+    //dash
+    dash = false;
+    dashou = false;
+    dashando = false;
+    dashDir = 0;
+    dashCim = 0;    
+    velMax = 5;
+    pulaDash = false;
+        
     
+    depth_atualiza();    
+    contador_zera();

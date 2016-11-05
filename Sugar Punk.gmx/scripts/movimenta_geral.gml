@@ -14,29 +14,47 @@ var sx = sign(vx);
 var sy = sign(vy);
 
 if !podeColidir{//Por enquanto é só isso, mas depois que tivermos montes e coisas do tipo a gente coloca esse código para ser impedido por objetos do tipo não ultrapassa em nenhuma hipótese.
-    x+=vx;
-    y+=vy;
+    if sx!=0{
+        if !place_meeting(x+vx,y,nao_atravessa){
+            x+=vx;
+        }else{
+            repeat(ceil(vx)){
+                if !place_meeting(x+sx,y,nao_atravessa){x+=sx}else{break;}   
+            }
+        }
+    }
+
+
+    if (sy!=0){
+        if !place_meeting(x,y+vy,nao_atravessa){
+            y+=vy;
+        }else{
+            repeat(ceil(vy)){
+                if !place_meeting(x,y+sy,nao_atravessa){y+=sy}else{break;}   
+            }
+        }
+    }
     return 0;
 }
 
 
 if sx!=0{
-    if !place_meeting(x+vx,y,Colide){
+    if !place_meeting(x+vx,y,Colide) && !place_meeting(x+vx,y,nao_atravessa){
         x+=vx;
     }else{
         repeat(ceil(vx)){
-            if !place_meeting(x+sx,y,Colide){x+=sx}else{break;}   
+            if !place_meeting(x+sx,y,Colide) && !place_meeting(x+sx,y,nao_atravessa){x+=sx}else{break;}   
         }
     }
 }
 
 
 if (sy!=0){
-    if !place_meeting(x,y+vy,Colide){
+    if !place_meeting(x,y+vy,Colide) && !place_meeting(x,y+vy,nao_atravessa){
         y+=vy;
     }else{
         repeat(ceil(vy)){
-            if !place_meeting(x,y+sy,Colide){y+=sy}else{break;}   
+            if !place_meeting(x,y+sy,Colide) && !place_meeting(x,y+sy,nao_atravessa){y+=sy}else{break;}   
         }
     }
 }
