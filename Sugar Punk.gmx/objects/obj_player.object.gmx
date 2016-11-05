@@ -175,7 +175,11 @@ switch (Estado) {
 depth_atualiza();
 player_nos_limites_da_view();
 
-if estado!=Estado{contador_zera();}
+if estado!=Estado{
+    contador_zera();
+    if (Estado != Ataca){ataque = 0;}
+    
+}
 if (Estado != Pula &amp;&amp; Estado != Dash){dashou = false;}
 
 </string>
