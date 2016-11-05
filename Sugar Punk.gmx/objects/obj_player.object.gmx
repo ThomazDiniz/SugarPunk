@@ -116,6 +116,7 @@ switch (Estado) {
     
     case Ataca:
         //Altera o estado no animation end
+        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
         ataca();
         var vel = (image_number - image_index)/image_number;
         var sp = 2;
