@@ -4,7 +4,7 @@
 var mask;
 
 if (bater && (ataque < 3)){
-    
+    if invisivel{invisivel = false;}
     //teste para não trocar rapidamente de uma imagem para outra do combo
     if (ataque >= 1) && (image_index < image_number*0.8){return false;}
     

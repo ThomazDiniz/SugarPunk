@@ -33,6 +33,17 @@
     velMax = 5;
     pulaDash = false;
         
+    //invisibilidade
+    clicaInvisibilidade = false;
+    invisivel = false;
+    
+    
+    //mana
+    mana = 10;//mana real
+    prevMana = 10;//mana para comparacao
+    contMana  = 30;//contador para se a mana pode recarregar
+    maxMana = 10;
+    
     
     depth_atualiza();    
     contador_zera();

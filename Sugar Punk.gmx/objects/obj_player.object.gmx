@@ -19,7 +19,7 @@
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_player</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -156,6 +156,7 @@ switch (Estado) {
     break;
     
     case CaiPesado:
+        invisivel = false;
         podeColidir = false;
         vz+=1.1;
         z+=vz;        
@@ -178,9 +179,35 @@ player_nos_limites_da_view();
 if estado!=Estado{
     contador_zera();
     if (Estado != Ataca){ataque = 0;}
-    
 }
+if clicaInvisibilidade{
+    if !invisivel{
+        invisivel = true;
+        repeat(3){
+            var rx = -2+random(4);
+            var ry = -random(10);
+            effect_create_above(ef_smoke,x+rx,y+z+ry,1,c_white);
+        }
+    }
+}
+if invisivel{mana-=0.05;if (mana &lt;=0){invisivel = false;}}
 if (Estado != Pula &amp;&amp; Estado != Dash){dashou = false;}
+
+
+if (mana&lt;prevMana){
+    prevMana = mana;
+    contMana = 60;
+}
+
+if (contMana &gt; 0){
+    contMana--;
+} else if (contMana == 0){
+    mana+=0.2;
+    if (mana &gt;= maxMana){mana = maxMana;contMana = -1;}
+    prevMana = mana;
+}
+
+
 
 </string>
           </argument>
@@ -219,6 +246,38 @@ switch Estado {
         }
     break;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>    draw_set_colour(c_purple);
+    draw_rectangle(10,10,15,10 + mana*10,false);
+    draw_set_colour(c_white);
+    
+    
+    
+    
+    
+    draw_text(100,10,"Mana: " + string(mana) + "/" + string(maxMana) + "
+    contMana: " + string(contMana) + " prevMana: " + string(prevMana));
 </string>
           </argument>
         </arguments>
@@ -291,12 +350,14 @@ draw_set_alpha(1);
     
 Y = y;
 y = y+z;
+    if invisivel{image_alpha = 0.3;}
     //Efeito maneiro quando cai
     if (Estado == CaiPesado || Estado == Dash || (Estado == Pula &amp;&amp; pulaDash)){
         scr_trace();
     }
     draw_self();
 y=Y;
+image_alpha = 1;
 </string>
           </argument>
         </arguments>

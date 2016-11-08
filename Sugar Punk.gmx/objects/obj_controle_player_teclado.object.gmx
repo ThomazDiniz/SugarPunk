@@ -55,7 +55,8 @@ cim = 0;
 pula = false;
 pulando = false;
 dash = false;
-    dashando = false;
+dashando = false;
+clicaInvisibilidade = false;
 
 //Movimentação
 if keyboard_check(vk_left) || keyboard_check(ord("A")){dir--;}
@@ -66,6 +67,7 @@ if keyboard_check_pressed(vk_space){pula = true;}
 if keyboard_check(vk_space){pulando = true;}
 if keyboard_check_pressed(ord("P")) || keyboard_check_pressed(ord("X")){dash =  true;}
 if keyboard_check(ord("P")) || keyboard_check(ord("X")){dashando =  true;}
+if keyboard_check_pressed(ord("I")) || keyboard_check_pressed(ord("C")){clicaInvisibilidade =  true;}
 
 
 //Habilidades
@@ -84,6 +86,7 @@ with(pai){
     pulando = other.pulando;
     dash = other.dash;
     dashando = other.dashando;
+    clicaInvisibilidade = other.clicaInvisibilidade;
 }
 
 </string>
