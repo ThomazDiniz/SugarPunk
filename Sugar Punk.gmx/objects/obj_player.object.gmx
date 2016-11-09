@@ -36,12 +36,37 @@ carrega = carrega_max;
 
 
 
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Altera a arma
+//provisório
+
+Weapon = real(string_char_at(string_digits(keyboard_string),string_length(string_digits(keyboard_string))))
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -69,14 +94,16 @@ vx*=0.8;
 vy*=0.8;
 podeColidir = true;
 var estado = Estado;
-//Estado Principal
+//Estado Principal 
+//Tem outro?
 switch (Estado) {
     case Parado:
         pulaDash = false;
         if (dir != 0 || cim != 0) {Estado = Anda;}
         if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
         if pula {Estado = Pula;vz = -10;}
-        ataca();
+        ofensiva();
+        cria_escudo();
     break;
     
     
@@ -86,7 +113,8 @@ switch (Estado) {
         if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
         movimenta_geral(vx,vy);
         define_dir();
-        ataca();
+        ofensiva();
+        cria_escudo();
     break;
     
     case Dash:
@@ -108,7 +136,7 @@ switch (Estado) {
             podeColidir = false;
         }else{
             if pula {Estado = Pula;vz = -10;pulaDash = true;}
-            ataca();
+            ofensiva();
         }
         movimenta_geral(dashDir*velMax,dashCim*velMax);
         
@@ -170,6 +198,27 @@ switch (Estado) {
             }
         }
         
+    break;
+    
+    case Escudado:
+        if (!escuda) {
+            Estado = Parado;
+            //Deleta escudo
+            with esc {instance_destroy();}
+        }
+        movimenta_geral(vx*0.5,vy*0.5);
+    break;
+    
+    case Mira:
+        if !bater_direct {
+            Estado = Parado;
+            //Deleta mosquete
+            with rifle {instance_destroy();}
+            //cria tiro
+            tiro = instance_create(x+lengthdir_x(60,get_dir()),y+lengthdir_y(60,get_dir()),obj_tiro)
+            tiro.image_angle = get_dir()
+        }
+        movimenta_geral(vx*0.5,vy*0.5);
     break;
 }
 
@@ -278,6 +327,29 @@ switch Estado {
     
     draw_text(100,10,"Mana: " + string(mana) + "/" + string(maxMana) + "
     contMana: " + string(contMana) + " prevMana: " + string(prevMana));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Debugs
+
+draw_text(50,50, "Weapon: " + string(Weapon));
 </string>
           </argument>
         </arguments>

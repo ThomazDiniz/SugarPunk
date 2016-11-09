@@ -66,6 +66,10 @@
     <sprite>sprites\spr_bloco</sprite>
     <sprite>sprites\spr_overkek</sprite>
     <sprite>sprites\spr_kekover</sprite>
+    <sprite>sprites\spr_escudo</sprite>
+    <sprite>sprites\spr_mosq</sprite>
+    <sprite>sprites\spr_tiro</sprite>
+    <sprite>sprites\spr_balaexplode</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -91,6 +95,9 @@
     <script>scripts\contador_conta.gml</script>
     <script>scripts\contador_zera.gml</script>
     <script>scripts\scr_trace.gml</script>
+    <script>scripts\cria_escudo.gml</script>
+    <script>scripts\cria_mosq.gml</script>
+    <script>scripts\ofensiva.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">
@@ -100,6 +107,7 @@
       <object>objects\ef_trava</object>
       <object>objects\ef_dano</object>
       <object>objects\ef_tracing</object>
+      <object>objects\ef_balaexplode</object>
     </objects>
     <objects name="Controles">
       <object>objects\obj_controle_player_teclado</object>
@@ -111,16 +119,21 @@
       <object>objects\obj_parede</object>
       <object>objects\obj_bloco</object>
     </objects>
+    <objects name="Mecanicas">
+      <object>objects\obj_ataquepesado</object>
+      <object>objects\obj_escudo</object>
+      <object>objects\obj_mosquete</object>
+      <object>objects\obj_tiro</object>
+    </objects>
     <object>objects\obj_attackmask</object>
     <object>objects\obj_dummy</object>
     <object>objects\obj_hitbox</object>
-    <object>objects\obj_ataquepesado</object>
     <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="13">
+  <constants number="15">
     <constant name="Parado">0</constant>
     <constant name="Anda">1</constant>
     <constant name="Corre">2</constant>
@@ -129,6 +142,8 @@
     <constant name="Dano">5</constant>
     <constant name="AtacaPesado">6</constant>
     <constant name="CaiPesado">8</constant>
+    <constant name="Escudado">9</constant>
+    <constant name="Mira">10</constant>
     <constant name="Pula">7</constant>
     <constant name="Cima">1</constant>
     <constant name="Baixo">3</constant>
