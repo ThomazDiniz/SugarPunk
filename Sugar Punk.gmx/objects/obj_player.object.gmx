@@ -76,8 +76,9 @@ switch (Estado) {
     case Parado:
         pulaDash = false;
         if (dir != 0 || cim != 0) {Estado = Anda;}
-        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
-        if pula {Estado = Pula;vz = -10;}
+        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2; 
+        audio_play_sound(snd_dash,0,0);}
+        if pula {Estado = Pula;vz = -10;audio_play_sound(snd_pulo,0,0);}
         ofensiva();
         cria_escudo();
     break;
@@ -85,8 +86,9 @@ switch (Estado) {
     
     case Anda:
         if (dir == 0 &amp;&amp; cim == 0) {Estado = Parado;}
-        if pula {Estado = Pula;vz = -10;}
-        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
+        if pula {Estado = Pula;vz = -10;audio_play_sound(snd_pulo,0,0);}
+        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2; 
+        audio_play_sound(snd_dash,0,0);}
         movimenta_geral(vx,vy);
         define_dir();
         ofensiva();
@@ -111,7 +113,7 @@ switch (Estado) {
         if z!=0{
             podeColidir = false;
         }else{
-            if pula {Estado = Pula;vz = -10;pulaDash = true;}
+            if pula {Estado = Pula;vz = -10;pulaDash = true;audio_play_sound(snd_pulo,0,0);}
             ofensiva();
         }
         movimenta_geral(dashDir*velMax,dashCim*velMax);
@@ -120,7 +122,8 @@ switch (Estado) {
     
     case Ataca:
         //Altera o estado no animation end
-        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2;}
+        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2; 
+        audio_play_sound(snd_dash,0,0);}
         ataca();
         var vel = (image_number - image_index)/image_number;
         var sp = 2;
@@ -156,7 +159,8 @@ switch (Estado) {
         if z &gt; 0{z = 0;}  
         if (z &gt;= 0){z = 0;if (!place_meeting(x,y,Colide)){Estado = Parado;}} 
         if (z &lt; 0) &amp;&amp; (bater){Estado = CaiPesado;}
-        if (dash &amp;&amp; !dashou){Estado = Dash;dashDir = dir*2; dashCim = cim*2;z-=0.1;}
+        if (dash &amp;&amp; !dashou){Estado = Dash;dashDir = dir*2; dashCim = cim*2;z-=0.1;audio_play_sound(snd_dash,0,0);}
+        
     break;
     
     case CaiPesado:
@@ -245,6 +249,30 @@ if (contMana &gt; 0){
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Listener
+if x != xprevious or y != yprevious {
+    audio_listener_position(x,y,0)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="7">
       <action>
@@ -300,7 +328,9 @@ switch Estado {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    draw_set_colour(c_purple);
+            <string>///Mana (beta)
+    
+            draw_set_colour(c_purple);
     draw_rectangle(10,10,15,10 + mana*10,false);
     draw_set_colour(c_white);
     

@@ -4,7 +4,15 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_explosion</sound>
+    <sound>sound\snd_slash1</sound>
+    <sound>sound\snd_slash2</sound>
+    <sound>sound\snd_dash</sound>
+    <sound>sound\snd_enemyhit</sound>
+    <sound>sound\snd_caipesado</sound>
+    <sound>sound\snd_pulo</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Diabetty">
       <sprites name="Moving">
@@ -72,6 +80,7 @@
     <sprite>sprites\spr_tiro2</sprite>
     <sprite>sprites\spr_tiro3</sprite>
     <sprite>sprites\spr_balaexplode</sprite>
+    <sprite>sprites\spr_bombeta</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -98,8 +107,12 @@
     <script>scripts\contador_zera.gml</script>
     <script>scripts\scr_trace.gml</script>
     <script>scripts\cria_escudo.gml</script>
+    <script>scripts\planta_bomba.gml</script>
     <script>scripts\cria_mosq.gml</script>
     <script>scripts\ofensiva.gml</script>
+    <script>scripts\emit_position.gml</script>
+    <script>scripts\emit_cria.gml</script>
+    <script>scripts\emit_destroi.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">
@@ -110,6 +123,7 @@
       <object>objects\ef_dano</object>
       <object>objects\ef_tracing</object>
       <object>objects\ef_balaexplode</object>
+      <object>objects\ef_explosao</object>
     </objects>
     <objects name="Controles">
       <object>objects\obj_controle_player_teclado</object>
@@ -128,6 +142,7 @@
       <object>objects\obj_tiro3</object>
       <object>objects\obj_tiro2</object>
       <object>objects\obj_tiro</object>
+      <object>objects\obj_bomba</object>
     </objects>
     <object>objects\obj_attackmask</object>
     <object>objects\obj_dummy</object>

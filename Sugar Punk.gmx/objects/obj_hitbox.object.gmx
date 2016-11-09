@@ -109,6 +109,7 @@ if ((other.pai != pai) &amp;&amp; (podeTomarDano)){
     dano = instance_create(x,y,ef_dano);
     dano.pai = pai;
     dano.depth = pai.depth-1;
+    audio_play_sound(snd_enemyhit,0,0)
     
     //Alarme para não criar um milhão de ef_danos
     podeTomarDano = false;

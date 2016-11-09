@@ -17,4 +17,16 @@ if (bater && (ataque < 3)){
     //Ajustando o image_index para mostrar animação completa
     image_index = 0;
     ataque++;
+    
+    //Alterna o som da espadada
+    if alterna_som_slash {
+        audio_play_sound(snd_slash1,0,0)
+        alterna_som_slash = !alterna_som_slash
+    }
+    else {
+        audio_play_sound(snd_slash2,0,0)
+        alterna_som_slash = !alterna_som_slash
+    }
 }
+
+

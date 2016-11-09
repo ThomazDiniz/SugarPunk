@@ -25,31 +25,79 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Som emitido
-audio_play_sound(snd_caipesado,0,0);
+            <string>//Som de explosão
+emit_cria();
+audio_play_sound_on(snd_emit,snd_explosion,0,0);
 
-
-///Raio do circulo de efeitos visuais
-raio = 0;
+//Alarme de auto-destruição
+alarm[0] = 5;
 
 //Screenshake obrigatório
-milkshaker(6);
+milkshaker(10);
 
 //Testando colisão com dummies
 with (obj_dummy){
-    //Checa se a distância está abaixo do necessário.
-    //É uma espécie de collision_circle mas que checa todas as instâncias
-    //dentro dele ao invés de só uma
+    //Mesma coisa do ataque pesado só que mais pesado ainda
     var dist = point_distance(x,y,other.x,other.y);
-    if dist  &lt; 150 {
+    if dist &lt; 200 {
         pai.Estado = Dano;
         dano = instance_create(x,y,ef_dano);
         dano.pai = id;
         direction =  point_direction(other.x,other.y,x,y);
-        speed = 50 - point_distance(x,y,other.x,other.y)/3;
+        speed = 100 - point_distance(x,y,other.x,other.y)/2;
     } 
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if !audio_is_playing(snd_explosion) {
+    emit_destroi();
+}
+
+alarm[0] = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -72,20 +120,10 @@ with (obj_dummy){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Efeitos visuais
+            <string>//Explosão simples
+draw_set_color(c_yellow)
+draw_circle(x,y,200,false);
 
-//Circulo maneiro que dá um efeito doido
-var alp = 1 - raio/200;
-
-draw_set_color(c_red);
-draw_set_alpha(alp);
-    draw_circle(x,y,raio,true);
-    raio += 10;
-draw_set_alpha(1);
-
-if alp &lt; 0 {
-    instance_destroy();
-}
 
 </string>
           </argument>
