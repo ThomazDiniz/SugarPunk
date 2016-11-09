@@ -34,11 +34,6 @@ cria_hitbox();
 carrega_max = 100;
 carrega = carrega_max;
 
-//Settando a arma default pra espada
-//Se você olhar o step, você vai entender
-//ou não, qualquer coisa é só perguntar
-keyboard_string = "1"
-
 
 
 
@@ -49,30 +44,6 @@ keyboard_string = "1"
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Altera a arma
-//provisório
-
-Weapon = real(string_char_at(string_digits(keyboard_string),string_length(string_digits(keyboard_string))))
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -100,8 +71,7 @@ vx*=0.8;
 vy*=0.8;
 podeColidir = true;
 var estado = Estado;
-//Estado Principal 
-//Tem outro?
+//Estado
 switch (Estado) {
     case Parado:
         pulaDash = false;
@@ -219,10 +189,16 @@ switch (Estado) {
         if !bater_direct {
             Estado = Parado;
             //Deleta mosquete
-            with rifle {instance_destroy();}
+            with (rifle) {instance_destroy();}
             //cria tiro
-            tiro = instance_create(x+lengthdir_x(60,get_dir()),y+lengthdir_y(60,get_dir()),obj_tiro)
-            tiro.image_angle = get_dir()
+            var obj = obj_tiro;
+            if (contMosq &gt; 30){obj = obj_tiro2;}
+            if (contMosq &gt;= 60){obj = obj_tiro3;}
+            tiro = instance_create(x+lengthdir_x(60,get_dir()),y+lengthdir_y(60,get_dir()),obj);
+            tiro.image_angle = get_dir();
+        } else {
+            contMosq++;
+            if (contMosq &gt; 120){contMosq = 120;}
         }
         movimenta_geral(vx*0.5,vy*0.5);
     break;
@@ -233,6 +209,7 @@ player_nos_limites_da_view();
 
 if estado!=Estado{
     contador_zera();
+    contMosq = 0;
     if (Estado != Ataca){ataque = 0;}
 }
 if clicaInvisibilidade{

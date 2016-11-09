@@ -44,6 +44,11 @@
     contMana  = 30;//contador para se a mana pode recarregar
     maxMana = 10;
     
+    //Arma
+    Weapon = "1";
+    
+    //Mosquete   
+    contMosq = 0;
     
     depth_atualiza();    
     contador_zera();

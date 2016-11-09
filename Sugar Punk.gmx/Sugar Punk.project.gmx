@@ -69,6 +69,8 @@
     <sprite>sprites\spr_escudo</sprite>
     <sprite>sprites\spr_mosq</sprite>
     <sprite>sprites\spr_tiro</sprite>
+    <sprite>sprites\spr_tiro2</sprite>
+    <sprite>sprites\spr_tiro3</sprite>
     <sprite>sprites\spr_balaexplode</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -123,6 +125,8 @@
       <object>objects\obj_ataquepesado</object>
       <object>objects\obj_escudo</object>
       <object>objects\obj_mosquete</object>
+      <object>objects\obj_tiro3</object>
+      <object>objects\obj_tiro2</object>
       <object>objects\obj_tiro</object>
     </objects>
     <object>objects\obj_attackmask</object>
