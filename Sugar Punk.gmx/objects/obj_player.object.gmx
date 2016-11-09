@@ -34,6 +34,12 @@ cria_hitbox();
 carrega_max = 100;
 carrega = carrega_max;
 
+//Settando a arma default pra espada
+//Se você olhar o step, você vai entender
+//ou não, qualquer coisa é só perguntar
+keyboard_string = "1"
+
+
 
 
 
