@@ -36,8 +36,7 @@ carrega = carrega_max;
 
 
 
-
-
+audio_listener_set_orientation(0, 0, 0, 1000, 0, -1, 0);
 </string>
           </argument>
         </arguments>
