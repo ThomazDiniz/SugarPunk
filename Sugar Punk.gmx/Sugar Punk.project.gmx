@@ -102,6 +102,7 @@
     </scripts>
     <script>scripts\movimenta_geral.gml</script>
     <script>scripts\cria_controle.gml</script>
+    <script>scripts\cria_controle_gamepad.gml</script>
     <script>scripts\inicializa_objeto.gml</script>
     <script>scripts\pai_nao_existe.gml</script>
     <script>scripts\depth_atualiza.gml</script>
@@ -127,6 +128,7 @@
     <script>scripts\emit_position.gml</script>
     <script>scripts\emit_cria.gml</script>
     <script>scripts\emit_destroi.gml</script>
+    <script>scripts\cria_controle_ext.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">
@@ -141,6 +143,7 @@
     </objects>
     <objects name="Controles">
       <object>objects\obj_controle_player_teclado</object>
+      <object>objects\obj_controle_player_gamepad</object>
     </objects>
     <objects name="Colisores">
       <object>objects\nao_atravessa</object>

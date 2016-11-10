@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>inicializa_objeto();
-cria_controle();
+cria_controle_ext();
 player_inicializa_armas();
 cria_hitbox();
 
@@ -177,7 +177,7 @@ switch (Estado) {
         z+=vz;      
         if z &gt; 0{z = 0;}  
         if (z &gt;= 0){z = 0;if (!place_meeting(x,y,Colide)){Estado = Parado;}} 
-        if (z &lt; 0) &amp;&amp; (bater){Estado = CaiPesado;}
+        //if (z &lt; 0) &amp;&amp; (bater){Estado = CaiPesado;}
         if (!dashou){
             if player_dash(){z-=0.1;}
         }
@@ -304,8 +304,15 @@ if x != xprevious or y != yprevious {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-switch Estado {
+            <string>switch Estado {
+    case Ataca:
+        Estado = Parado;
+        ataque = 0;
+    break;
+}
+
+//Temporariamente removido por preguiça
+/*switch Estado {
     case Ataca:
         //Caso esteja segurando o botão, muda para o ataque pesado, caso contrário
         //volta pro parado
