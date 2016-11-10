@@ -59,25 +59,32 @@ dashando = false;
 clicaInvisibilidade = false;
 
 //Movimentação
-if keyboard_check(vk_left) || keyboard_check(ord("A")){dir--;}
-if keyboard_check(vk_right) || keyboard_check(ord("D")){dir++;}
-if keyboard_check(vk_up) || keyboard_check(ord("W")){cim--;}
-if keyboard_check(vk_down) || keyboard_check(ord("S")){cim++;}
+if keyboard_check(vk_left){dir--;}
+if keyboard_check(vk_right){dir++;}
+if keyboard_check(vk_up){cim--;}
+if keyboard_check(vk_down){cim++;}
 if keyboard_check_pressed(vk_space){pula = true;}
 if keyboard_check(vk_space){pulando = true;}
-if keyboard_check_pressed(ord("P")) || keyboard_check_pressed(ord("X")){dash =  true;}
+if keyboard_check_pressed(ord("A")){dash =  true;}
 if keyboard_check(ord("P")) || keyboard_check(ord("X")){dashando =  true;}
 if keyboard_check_pressed(ord("I")) || keyboard_check_pressed(ord("C")){clicaInvisibilidade =  true;}
 Weapon = real(string_char_at(string_digits(keyboard_string),string_length(string_digits(keyboard_string))));
 
-//Habilidades
 
 //Bater
-bater = keyboard_check_pressed(ord('Z')) || keyboard_check_pressed(ord('O'))
-bater_direct = keyboard_check(ord('Z')) || keyboard_check(ord('O'))
+bater = keyboard_check_pressed(ord('S'));
+bater_direct = keyboard_check(ord('S'));
 
-//Escudo
-escuda = keyboard_check(ord('L')) || keyboard_check(ord('V'))
+//Primario e secundario
+primaria_clica = keyboard_check_pressed(ord('S'));
+primaria_segura = keyboard_check(ord('S'));
+secundaria_clica = keyboard_check_pressed(ord('D'));
+secundaria_segura = keyboard_check(ord('D'));
+
+//Troca
+troca_primaria = keyboard_check_pressed(ord('W'));
+troca_secundaria = keyboard_check_pressed(ord('E'));
+
 
 //Se precisar passar esses botoes para outro objeto eh mais facil e deixa o player mais limpo:
 with(pai){
@@ -90,8 +97,20 @@ with(pai){
     dash = other.dash;
     dashando = other.dashando;
     clicaInvisibilidade = other.clicaInvisibilidade;
-    escuda = other.escuda;
     Weapon = other.Weapon;
+
+    //Primario e secundario
+    primaria_clica = other.primaria_clica;
+    primaria_segura = other.primaria_segura;
+    secundaria_clica = other.secundaria_clica;
+    secundaria_segura = other.secundaria_segura;
+
+    //Troca
+    troca_primaria = other.troca_primaria;
+    troca_secundaria = other.troca_secundaria;
+
+
+
 }
 
 </string>

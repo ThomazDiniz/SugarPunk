@@ -45,17 +45,27 @@
     maxMana = 10;
     
     //Mosquete   
+    mirando = false;
     contMosq = 0;
     
     //Booleano de alternância do som da espadada
     alterna_som_slash = 0
+
     
+    ///Variaveis das armas
+    primaria_clica = false;
+    primaria_segura = false;
+    secundaria_clica = false;
+    secundaria_segura = false;
+        
+    
+    bomba = -1;
+        
     //Emissor de áudio
     //Ainda não pensei num jeito de dar audio_emitter_free()
     //de uma forma fácil, mas discutimos isso depois. Não vai rolar
     //leak no protótipo
-    //emit_cria()
-    
+    //emit_cria();
     //Temporariamente desativado já que então só um objeto usa essa função
     
     depth_atualiza();    

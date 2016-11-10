@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>inicializa_objeto();
 cria_controle();
-
+player_inicializa_armas();
 cria_hitbox();
 
 //Contador que define quantos steps são necessários pra dar o ataque pesado
@@ -37,6 +37,30 @@ carrega = carrega_max;
 
 
 audio_listener_set_orientation(0, 0, 0, 1000, 0, -1, 0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>mirando = false;
+escuda = false;
 </string>
           </argument>
         </arguments>
@@ -70,28 +94,25 @@ vx*=0.8;
 vy*=0.8;
 podeColidir = true;
 var estado = Estado;
+
 //Estado
 switch (Estado) {
     case Parado:
         pulaDash = false;
         if (dir != 0 || cim != 0) {Estado = Anda;}
-        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2; 
-        audio_play_sound(snd_dash,0,0);}
-        if pula {Estado = Pula;vz = -10;audio_play_sound(snd_pulo,0,0);}
-        ofensiva();
-        cria_escudo();
+        player_dash();
+        player_pula();
+        player_usa_arma();
     break;
     
     
     case Anda:
         if (dir == 0 &amp;&amp; cim == 0) {Estado = Parado;}
-        if pula {Estado = Pula;vz = -10;audio_play_sound(snd_pulo,0,0);}
-        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2; 
-        audio_play_sound(snd_dash,0,0);}
+        player_pula();
+        player_dash();
         movimenta_geral(vx,vy);
         define_dir();
-        ofensiva();
-        cria_escudo();
+        player_usa_arma();
     break;
     
     case Dash:
@@ -112,8 +133,8 @@ switch (Estado) {
         if z!=0{
             podeColidir = false;
         }else{
-            if pula {Estado = Pula;vz = -10;pulaDash = true;audio_play_sound(snd_pulo,0,0);}
-            ofensiva();
+            if player_pula(){pulaDash = true;}
+            player_usa_arma();
         }
         movimenta_geral(dashDir*velMax,dashCim*velMax);
         
@@ -121,9 +142,8 @@ switch (Estado) {
     
     case Ataca:
         //Altera o estado no animation end
-        if dash{Estado = Dash;dashDir = dir*2; dashCim = cim*2; 
-        audio_play_sound(snd_dash,0,0);}
-        ataca();
+        player_dash();
+        player_usa_arma();
         var vel = (image_number - image_index)/image_number;
         var sp = 2;
         var dx = (vx+lengthdir_x(sp,get_dir()))*vel;
@@ -158,8 +178,9 @@ switch (Estado) {
         if z &gt; 0{z = 0;}  
         if (z &gt;= 0){z = 0;if (!place_meeting(x,y,Colide)){Estado = Parado;}} 
         if (z &lt; 0) &amp;&amp; (bater){Estado = CaiPesado;}
-        if (dash &amp;&amp; !dashou){Estado = Dash;dashDir = dir*2; dashCim = cim*2;z-=0.1;audio_play_sound(snd_dash,0,0);}
-        
+        if (!dashou){
+            if player_dash(){z-=0.1;}
+        }
     break;
     
     case CaiPesado:
@@ -180,16 +201,18 @@ switch (Estado) {
     break;
     
     case Escudado:
+        player_usa_arma();
         if (!escuda) {
             Estado = Parado;
             //Deleta escudo
-            with esc {instance_destroy();}
+            with(esc){instance_destroy();}
         }
         movimenta_geral(vx*0.5,vy*0.5);
     break;
     
     case Mira:
-        if !bater_direct {
+        player_usa_arma();
+        if !mirando {
             Estado = Parado;
             //Deleta mosquete
             with (rifle) {instance_destroy();}
@@ -215,16 +238,7 @@ if estado!=Estado{
     contMosq = 0;
     if (Estado != Ataca){ataque = 0;}
 }
-if clicaInvisibilidade{
-    if !invisivel{
-        invisivel = true;
-        repeat(3){
-            var rx = -2+random(4);
-            var ry = -random(10);
-            effect_create_above(ef_smoke,x+rx,y+z+ry,1,c_white);
-        }
-    }
-}
+
 if invisivel{mana-=0.05;if (mana &lt;=0){invisivel = false;}}
 if (Estado != Pula &amp;&amp; Estado != Dash){dashou = false;}
 
@@ -243,7 +257,7 @@ if (contMana &gt; 0){
 }
 
 
-
+player_troca_arma();
 </string>
           </argument>
         </arguments>
@@ -361,7 +375,10 @@ switch Estado {
             <kind>1</kind>
             <string>///Debugs
 
-draw_text(50,50, "Weapon: " + string(Weapon));
+draw_text(200,250, "Weapon1: " + string(primaria));
+draw_text(200,350, "Weapon2: " + string(secundaria));
+draw_text(200,400, "Weapon2: " + string(mirando));
+
 </string>
           </argument>
         </arguments>

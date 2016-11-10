@@ -85,6 +85,21 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="Player ">
+      <script>scripts\player_troca_arma.gml</script>
+      <script>scripts\player_inicializa_armas.gml</script>
+      <script>scripts\player_usa_arma.gml</script>
+      <script>scripts\player_pula.gml</script>
+      <script>scripts\player_dash.gml</script>
+      <script>scripts\player_invisibilidade.gml</script>
+      <script>scripts\ofensiva.gml</script>
+      <script>scripts\mana_usa.gml</script>
+      <script>scripts\mana_pode_usar.gml</script>
+      <script>scripts\ofensiva_segura.gml</script>
+    </scripts>
+    <scripts name="Itens">
+      <script>scripts\bomba_explode.gml</script>
+    </scripts>
     <script>scripts\movimenta_geral.gml</script>
     <script>scripts\cria_controle.gml</script>
     <script>scripts\inicializa_objeto.gml</script>
@@ -109,7 +124,6 @@
     <script>scripts\cria_escudo.gml</script>
     <script>scripts\planta_bomba.gml</script>
     <script>scripts\cria_mosq.gml</script>
-    <script>scripts\ofensiva.gml</script>
     <script>scripts\emit_position.gml</script>
     <script>scripts\emit_cria.gml</script>
     <script>scripts\emit_destroi.gml</script>

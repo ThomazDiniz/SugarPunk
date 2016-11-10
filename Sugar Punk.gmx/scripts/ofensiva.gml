@@ -1,17 +1,22 @@
-///ofensiva()
-//Usa a arma atualmente na mão
-
-switch (Weapon) {    
+///ofensiva(arma)
+switch (argument0) {    
+    case 1:
+        cria_mosq();
+    break;
+    
     case 2:
-        cria_mosq()
+        planta_bomba();
     break;
     
     case 3:
-        planta_bomba()
+        player_invisibilidade();
     break;
-
-     default:
-        ataca()
-     break;
-
+     
+    case 4:
+        cria_escudo();
+    break;
+    
+    default:
+       ataca();
+    break;
 }
