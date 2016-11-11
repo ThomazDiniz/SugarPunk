@@ -95,6 +95,9 @@ vy*=0.8;
 podeColidir = true;
 var estado = Estado;
 
+
+atacando = false;
+
 //Estado
 switch (Estado) {
     case Parado:
@@ -107,6 +110,7 @@ switch (Estado) {
     
     
     case Anda:
+        image_speed = 20/point_distance(0,0,vx,vy);
         if (dir == 0 &amp;&amp; cim == 0) {Estado = Parado;}
         player_pula();
         player_dash();
@@ -142,6 +146,7 @@ switch (Estado) {
     
     case Ataca:
         //Altera o estado no animation end
+        atacando = true;
         player_dash();
         player_usa_arma();
         var vel = (image_number - image_index)/image_number;
@@ -157,16 +162,23 @@ switch (Estado) {
     
     
     case AtacaPesado:
-        if (!bater_direct) {
+        /*if (!bater_direct) {
             Estado = Parado;
             var xx = x + lengthdir_x(50,get_dir());
             var yy = y + lengthdir_y(50,get_dir());
             instance_create(xx,yy,obj_ataquepesado);
-        }
+        }*/
         movimenta_geral(vx*0.3,vy*0.3);
     break;
     
+    case CarregaFaca:
+        player_usa_arma();
+        movimenta_geral(vx*0.3,vy*0.3);
+        
+    break;
+    
     case Pula:
+        player_usa_arma();
         podeColidir = false;
         define_dir();
         var mult = 1;
@@ -177,7 +189,6 @@ switch (Estado) {
         z+=vz;      
         if z &gt; 0{z = 0;}  
         if (z &gt;= 0){z = 0;if (!place_meeting(x,y,Colide)){Estado = Parado;}} 
-        //if (z &lt; 0) &amp;&amp; (bater){Estado = CaiPesado;}
         if (!dashou){
             if player_dash(){z-=0.1;}
         }
@@ -201,6 +212,7 @@ switch (Estado) {
     break;
     
     case Escudado:
+        atacando = true;
         player_usa_arma();
         if (!escuda) {
             Estado = Parado;
@@ -211,6 +223,7 @@ switch (Estado) {
     break;
     
     case Mira:
+        atacando = true;
         player_usa_arma();
         if !mirando {
             Estado = Parado;
@@ -258,6 +271,9 @@ if (contMana &gt; 0){
 
 
 player_troca_arma();
+
+
+
 </string>
           </argument>
         </arguments>
@@ -279,9 +295,7 @@ player_troca_arma();
           <argument>
             <kind>1</kind>
             <string>///Listener
-if x != xprevious or y != yprevious {
     audio_listener_position(x,y,0)
-}
 </string>
           </argument>
         </arguments>
@@ -306,6 +320,11 @@ if x != xprevious or y != yprevious {
             <kind>1</kind>
             <string>switch Estado {
     case Ataca:
+        Estado = Parado;
+        ataque = 0;
+    break;
+    
+    case AtacaPesado:
         Estado = Parado;
         ataque = 0;
     break;
@@ -441,7 +460,11 @@ switch Estado {
     break;
     
     case AtacaPesado:
-        image_index = sprite_get_number(sprite_index)-1
+        sprite_index = spr_diabetty_charge_attack;
+    break;
+    
+    case CarregaFaca:
+        auto_dir("spr_diabetty_charge");
     break;
 
     case Pula:

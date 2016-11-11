@@ -34,6 +34,7 @@
         <sprite>sprites\spr_diabetty_charge_right</sprite>
         <sprite>sprites\spr_diabetty_charge_down</sprite>
         <sprite>sprites\spr_diabetty_charge_up</sprite>
+        <sprite>sprites\spr_diabetty_charge_attack</sprite>
       </sprites>
       <sprites name="Slashing">
         <sprite>sprites\spr_diabetty_slash1_up</sprite>
@@ -96,39 +97,50 @@
       <script>scripts\mana_usa.gml</script>
       <script>scripts\mana_pode_usar.gml</script>
       <script>scripts\ofensiva_segura.gml</script>
+      <script>scripts\ofensiva_solta.gml</script>
+      <script>scripts\ataca.gml</script>
+      <script>scripts\cria_mosq.gml</script>
+      <script>scripts\ataca_pesado.gml</script>
+      <script>scripts\planta_bomba.gml</script>
+      <script>scripts\cria_escudo.gml</script>
     </scripts>
     <scripts name="Itens">
       <script>scripts\bomba_explode.gml</script>
     </scripts>
-    <script>scripts\movimenta_geral.gml</script>
-    <script>scripts\cria_controle.gml</script>
-    <script>scripts\cria_controle_gamepad.gml</script>
-    <script>scripts\inicializa_objeto.gml</script>
-    <script>scripts\pai_nao_existe.gml</script>
-    <script>scripts\depth_atualiza.gml</script>
-    <script>scripts\anima_dir.gml</script>
-    <script>scripts\define_dir.gml</script>
-    <script>scripts\auto_dir.gml</script>
-    <script>scripts\colideAFrente.gml</script>
-    <script>scripts\cria_attack_mask.gml</script>
-    <script>scripts\ataca.gml</script>
+    <scripts name="Gerais">
+      <script>scripts\depth_atualiza.gml</script>
+      <script>scripts\movimenta_geral.gml</script>
+      <script>scripts\inicializa_objeto.gml</script>
+      <script>scripts\anima_dir.gml</script>
+      <script>scripts\define_dir.gml</script>
+      <script>scripts\auto_dir.gml</script>
+      <script>scripts\colideAFrente.gml</script>
+    </scripts>
+    <scripts name="Controles">
+      <script>scripts\cria_controle_ext.gml</script>
+      <script>scripts\cria_controle_gamepad.gml</script>
+      <script>scripts\cria_controle.gml</script>
+    </scripts>
+    <scripts name="Diversos">
+      <script>scripts\pai_nao_existe.gml</script>
+      <script>scripts\contador_zera.gml</script>
+      <script>scripts\contador_conta.gml</script>
+    </scripts>
+    <scripts name="Efeitos">
+      <script>scripts\milkshaker.gml</script>
+      <script>scripts\scr_trace.gml</script>
+      <script>scripts\trava_tela.gml</script>
+    </scripts>
+    <scripts name="Audio">
+      <script>scripts\emit_destroi.gml</script>
+      <script>scripts\emit_cria.gml</script>
+      <script>scripts\emit_position.gml</script>
+    </scripts>
     <script>scripts\get_dir.gml</script>
+    <script>scripts\cria_attack_mask.gml</script>
     <script>scripts\cria_hitbox.gml</script>
-    <script>scripts\trava_tela.gml</script>
     <script>scripts\debuga_estado.gml</script>
-    <script>scripts\ataca_pesado.gml</script>
     <script>scripts\player_nos_limites_da_view.gml</script>
-    <script>scripts\milkshaker.gml</script>
-    <script>scripts\contador_conta.gml</script>
-    <script>scripts\contador_zera.gml</script>
-    <script>scripts\scr_trace.gml</script>
-    <script>scripts\cria_escudo.gml</script>
-    <script>scripts\planta_bomba.gml</script>
-    <script>scripts\cria_mosq.gml</script>
-    <script>scripts\emit_position.gml</script>
-    <script>scripts\emit_cria.gml</script>
-    <script>scripts\emit_destroi.gml</script>
-    <script>scripts\cria_controle_ext.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Player">
@@ -169,7 +181,7 @@
   <rooms name="rooms">
     <room>rooms\room0</room>
   </rooms>
-  <constants number="15">
+  <constants number="16">
     <constant name="Parado">0</constant>
     <constant name="Anda">1</constant>
     <constant name="Corre">2</constant>
@@ -180,6 +192,7 @@
     <constant name="CaiPesado">8</constant>
     <constant name="Escudado">9</constant>
     <constant name="Mira">10</constant>
+    <constant name="CarregaFaca">11</constant>
     <constant name="Pula">7</constant>
     <constant name="Cima">1</constant>
     <constant name="Baixo">3</constant>

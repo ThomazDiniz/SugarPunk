@@ -92,8 +92,11 @@ if keyboard_check(ord("A")){dashando =  true;}*/
 //Primario e secundario
 primaria_clica = keyboard_check_pressed(ord('S'));
 primaria_segura = keyboard_check(ord('S'));
+primaria_solta = keyboard_check_released(ord('S'));
+
 secundaria_clica = keyboard_check_pressed(ord('D'));
 secundaria_segura = keyboard_check(ord('D'));
+secundaria_solta = keyboard_check_released(ord('D'));
 
 //Troca
 troca_primaria = keyboard_check_pressed(ord('W'));
@@ -114,8 +117,10 @@ with(pai){
     //Primario e secundario
     primaria_clica = other.primaria_clica;
     primaria_segura = other.primaria_segura;
+    primaria_solta = other.primaria_solta;
     secundaria_clica = other.secundaria_clica;
     secundaria_segura = other.secundaria_segura;
+    secundaria_solta = other.secundaria_solta;
 
     //Troca
     troca_primaria = other.troca_primaria;

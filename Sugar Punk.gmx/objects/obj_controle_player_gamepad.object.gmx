@@ -52,10 +52,10 @@
 dir = 0;
 cim = 0;
 
-if abs(gamepad_axis_value(0,gp_axislh)) &gt; 0.05{
+if abs(gamepad_axis_value(0,gp_axislh)) &gt; 0.2{
     dir = gamepad_axis_value(0,gp_axislh);
 }
-if abs(gamepad_axis_value(0,gp_axislv)) &gt; 0.05{
+if abs(gamepad_axis_value(0,gp_axislv)) &gt; 0.2{
     cim = gamepad_axis_value(0,gp_axislv);
 }
 
@@ -74,8 +74,10 @@ dashando =  gamepad_button_check(0,gp_face2);
 //Primario e secundario
 primaria_clica = gamepad_button_check_pressed(0,gp_face3);
 primaria_segura = gamepad_button_check(0,gp_face3);
+primaria_solta = gamepad_button_check_released(0,gp_face3);
 secundaria_clica = gamepad_button_check_pressed(0,gp_face4);
 secundaria_segura = gamepad_button_check(0,gp_face4);
+secundaria_segura_solta = gamepad_button_check_released(0,gp_face4);
 
 //Troca
 troca_primaria = gamepad_button_check_pressed(0,gp_shoulderl);
@@ -96,8 +98,10 @@ with(pai){
     //Primario e secundario
     primaria_clica = other.primaria_clica;
     primaria_segura = other.primaria_segura;
+    primaria_solta = other.primaria_solta;
     secundaria_clica = other.secundaria_clica;
     secundaria_segura = other.secundaria_segura;
+    secundaria_solta = other.secundaria_solta;
 
     //Troca
     troca_primaria = other.troca_primaria;

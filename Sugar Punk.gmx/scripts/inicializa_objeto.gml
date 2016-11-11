@@ -11,7 +11,7 @@
     cim = 0;
     pai = -1;
     ataque = 0;
-    
+    segAtaque = 0;
     
     //Direção que o personagem está "olhando"
     olha = Baixo
@@ -55,11 +55,16 @@
     ///Variaveis das armas
     primaria_clica = false;
     primaria_segura = false;
+    primaria_solta = false;
     secundaria_clica = false;
     secundaria_segura = false;
+    secundaria_solta = false;
         
     
     bomba = -1;
+    
+    atacando = false;
+    
         
     //Emissor de áudio
     //Ainda não pensei num jeito de dar audio_emitter_free()

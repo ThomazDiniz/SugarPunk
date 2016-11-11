@@ -1,11 +1,11 @@
-///ataca()
+///ataca();
 
-//Transita pro estado de atacar
+segAtaque=0;
 var mask;
-if (ataque < 3){
+if (ataque < 3) && mana_usa(1){
     if invisivel{invisivel = false;}
     //teste para não trocar rapidamente de uma imagem para outra do combo
-    if (ataque >= 1) && (image_index < image_number*0.8){return false;}
+    if (ataque >= 1) && (image_index < image_number*0.8){mana_usa(-1);return false;}
     
     //Toda vez que atacar eh bom definir a dir
     define_dir();
