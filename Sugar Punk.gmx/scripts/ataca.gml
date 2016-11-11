@@ -2,7 +2,7 @@
 
 segAtaque=0;
 var mask;
-if (ataque < 3) && mana_usa(1){
+if (ataque <= 3) && mana_usa(1){
     if invisivel{invisivel = false;}
     //teste para não trocar rapidamente de uma imagem para outra do combo
     if (ataque >= 1) && (image_index < image_number*0.8){mana_usa(-1);return false;}
@@ -16,6 +16,7 @@ if (ataque < 3) && mana_usa(1){
     //Ajustando o image_index para mostrar animação completa
     image_index = 0;
     ataque++;
+    if (ataque > 3){ataque=1;}
     
     //Alterna o som da espadada
     if alterna_som_slash {
@@ -26,5 +27,4 @@ if (ataque < 3) && mana_usa(1){
         alterna_som_slash = !alterna_som_slash
     }
 }
-
 
