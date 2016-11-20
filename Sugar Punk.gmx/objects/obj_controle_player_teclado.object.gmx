@@ -63,32 +63,6 @@ dash = keyboard_check_pressed(ord("A"))
 dashando =  keyboard_check(ord("A"))
 
 
-//Código Antigo
-/*///Codigo dos controles
-
-dir = 0;
-cim = 0;
-pula = false;
-pulando = false;
-dash = false;
-dashando = false;
-clicaInvisibilidade = false;
-
-//Movimentação
-if keyboard_check(vk_left){dir--;}
-if keyboard_check(vk_right){dir++;}
-if keyboard_check(vk_up){cim--;}
-if keyboard_check(vk_down){cim++;}
-if keyboard_check_pressed(vk_space){pula = true;}
-if keyboard_check(vk_space){pulando = true;}
-if keyboard_check_pressed(ord("A")){dash =  true;}
-if keyboard_check(ord("A")){dashando =  true;}*/
-
-
-//Bater
-//bater = keyboard_check_pressed(ord('S'));
-//bater_direct = keyboard_check(ord('S'));
-
 //Primario e secundario
 primaria_clica = keyboard_check_pressed(ord('S'));
 primaria_segura = keyboard_check(ord('S'));
@@ -129,6 +103,32 @@ with(pai){
 
 
 }
+
+//Código Antigo
+/*///Codigo dos controles
+
+dir = 0;
+cim = 0;
+pula = false;
+pulando = false;
+dash = false;
+dashando = false;
+clicaInvisibilidade = false;
+
+//Movimentação
+if keyboard_check(vk_left){dir--;}
+if keyboard_check(vk_right){dir++;}
+if keyboard_check(vk_up){cim--;}
+if keyboard_check(vk_down){cim++;}
+if keyboard_check_pressed(vk_space){pula = true;}
+if keyboard_check(vk_space){pulando = true;}
+if keyboard_check_pressed(ord("A")){dash =  true;}
+if keyboard_check(ord("A")){dashando =  true;}*/
+
+
+//Bater
+//bater = keyboard_check_pressed(ord('S'));
+//bater_direct = keyboard_check(ord('S'));
 
 </string>
           </argument>

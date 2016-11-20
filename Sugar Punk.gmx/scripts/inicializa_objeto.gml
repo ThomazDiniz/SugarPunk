@@ -44,6 +44,9 @@
     contMana  = 30;//contador para se a mana pode recarregar
     maxMana = 10;
     
+    //vida
+    vida = 10; //vida irreal
+    
     //Mosquete   
     mirando = false;
     contMosq = 0;

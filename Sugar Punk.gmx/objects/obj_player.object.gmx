@@ -370,7 +370,7 @@ player_troca_arma();
             <string>///Mana (beta)
     
             draw_set_colour(c_purple);
-    draw_rectangle(10,10,15,10 + mana*10,false);
+    draw_rectangle(10,80,10 + mana*20,90,false);
     draw_set_colour(c_white);
     
     
@@ -401,10 +401,82 @@ player_troca_arma();
             <kind>1</kind>
             <string>///Debugs
 
-draw_text(200,250, "Weapon1: " + string(primaria));
+//Obsoleto por causa da nova hud, mas deixarei comentado caso qualquer coisa
+/*draw_text(200,250, "Weapon1: " + string(primaria));
 draw_text(200,350, "Weapon2: " + string(secundaria));
-draw_text(200,400, "Weapon2: " + string(mirando));
+draw_text(200,400, "Weapon2: " + string(mirando)); // &lt;-- O que ele quis dizer com isso? 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Vida
+
+var num;
+
+//Número de corações inteiros e a fração restante
+num = vida div 4;
+resto = vida mod 4;
+
+//Desenha ditos corações
+for (i = 0; i &lt; num ; i++) {
+    draw_sprite(spr_vida,4,50 + 35*i,50);
+}
+
+//Desenha um coração não-inteiro caso 
+//o número de vida não seja divisivel por 4
+draw_sprite(spr_vida,resto,50 + 35*num,50);
+
+//Debug da vida
+//não adicione no obj_Teclado, é temporário
+if keyboard_check_pressed(ord('O')) {vida = clamp(0,80,vida-1);}
+if keyboard_check_pressed(ord('P')) {vida = clamp(0,80,vida+1);}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HUD das skills
+
+//Desenha os quadrados
+for (i = 0; i &lt; 2; i++) {
+    draw_sprite(spr_hud_sel,0,view_wview-100-90*i,70);
+}
+
+//Desenha as habilidades selecionadas
+draw_sprite(sele_hud(primaria),0,view_wview-190,70);
+draw_sprite(sele_hud(secundaria),0,view_wview-100,70);
 </string>
           </argument>
         </arguments>
