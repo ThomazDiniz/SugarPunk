@@ -83,7 +83,7 @@
     <sprite>sprites\spr_balaexplode</sprite>
     <sprite>sprites\spr_bombeta</sprite>
     <sprite>sprites\spr_vida</sprite>
-    <sprite>sprites\sprite49</sprite>
+    <sprite>sprites\spr_nulo</sprite>
     <sprites name="armas_hud">
       <sprite>sprites\spr_hud_bomba</sprite>
       <sprite>sprites\spr_hud_escudo</sprite>

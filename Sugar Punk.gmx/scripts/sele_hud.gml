@@ -1,8 +1,12 @@
 ///sele_hud(num)
 //Seleciona o sprite para a habilidade escolhida
-var spr;
+var spr ;
 
 switch argument0 {
+
+    case -1:
+        spr = spr_nulo
+    break;
 
     case 0:
         spr = spr_hud_espada;
