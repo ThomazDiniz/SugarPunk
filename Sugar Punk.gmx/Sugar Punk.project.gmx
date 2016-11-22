@@ -71,6 +71,20 @@
       <sprite>sprites\spr_dummy_collision</sprite>
       <sprite>sprites\spr_dummy_damage</sprite>
     </sprites>
+    <sprites name="NPC">
+      <sprites name="Movendo">
+        <sprite>sprites\spr_npc_move_up</sprite>
+        <sprite>sprites\spr_npc_move_left</sprite>
+        <sprite>sprites\spr_npc_move_down</sprite>
+        <sprite>sprites\spr_npc_move_right</sprite>
+      </sprites>
+      <sprites name="Parado">
+        <sprite>sprites\spr_npc_idle_right</sprite>
+        <sprite>sprites\spr_npc_idle_down</sprite>
+        <sprite>sprites\spr_npc_idle_left</sprite>
+        <sprite>sprites\spr_npc_idle_up</sprite>
+      </sprites>
+    </sprites>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_bloco</sprite>
     <sprite>sprites\spr_overkek</sprite>
@@ -152,7 +166,16 @@
     <script>scripts\debuga_estado.gml</script>
     <script>scripts\player_nos_limites_da_view.gml</script>
     <script>scripts\sele_hud.gml</script>
+    <script>scripts\inicializa_npc.gml</script>
+    <script>scripts\cria_texto.gml</script>
+    <script>scripts\desenha_texto.gml</script>
+    <script>scripts\interabox.gml</script>
+    <script>scripts\interabox_debug.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_dialog</font>
+    <font>fonts\font_debug</font>
+  </fonts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\obj_player</object>
@@ -188,6 +211,8 @@
     <object>objects\obj_dummy</object>
     <object>objects\obj_hitbox</object>
     <object>objects\obj_camera</object>
+    <object>objects\obj_npc</object>
+    <object>objects\obj_texto</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

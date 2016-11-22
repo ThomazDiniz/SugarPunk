@@ -53,6 +53,9 @@
     
     //Booleano de alternância do som da espadada
     alterna_som_slash = 0
+    
+    //Booleano para dizer o player tá interagindo
+    intera = 0
 
     
     ///Variaveis das armas
