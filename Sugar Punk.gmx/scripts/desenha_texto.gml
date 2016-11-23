@@ -5,11 +5,13 @@ var cor1 = argument2;
 var cor2 = argument3;
 var str = argument4;
 
+var space = -1;
+
 draw_set_colour(cor1);
-    draw_text(xx-2,yy,str);
-    draw_text(xx+2,yy,str);
-    draw_text(xx,yy-2,str);
-    draw_text(xx,yy+2,str);
+    draw_text_ext(xx-2,yy,str,space,924);
+    draw_text_ext(xx+2,yy,str,space,924);
+    draw_text_ext(xx,yy-2,str,space,924);
+    draw_text_ext(xx,yy+2,str,space,924);
 
 draw_set_colour(cor2);
-    draw_text(xx,yy,str);
+    draw_text_ext(xx,yy,str,space,924);

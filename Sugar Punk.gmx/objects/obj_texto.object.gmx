@@ -32,7 +32,30 @@ cor_out = c_black;
 cor = c_white;
 size = 1
 alarm[0] = 5;
+alarm[1] = 1
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -81,7 +104,9 @@ alarm[0] = 3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Desenha a dialogbox
+            <string>///Dialogo
+
+//Desenha a dialogbox
 draw_set_color(c_black);
 draw_rectangle(0,3*view_hview/4,view_wview,view_hview,false);
 
@@ -94,6 +119,32 @@ desenha_texto(50,3*view_hview/4 + 20,c_black,cor_out,nome);
 desenha_texto(50,3*view_hview/4 + 60,cor_out,cor,written);
 
 draw_set_font(font_debug);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Debug
+
+draw_set_color(c_green)
+draw_line(50,3*view_hview/4+50,view_wview-50,3*view_hview/4+50)
+
+draw_text(50,3*view_hview/4+150,view_wview-100)
 </string>
           </argument>
         </arguments>

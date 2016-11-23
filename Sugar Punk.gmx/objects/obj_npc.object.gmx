@@ -33,7 +33,8 @@ inicializa_npc("Donovan","spr_npc_idle","spr_npc_move");
 
 falas = ds_list_create()
 
-ds_list_add(falas,"Eles levaram tudo o que eu tinha", "não tem pra onde ir", 
+ds_list_add(falas,"Sabled Sun - Signals, is a series of space ambient works that portrays signals that the protagonist from the albums 2145, 2146 and 2147 finds on his journey to find out what happened to humanity after waking up from hibernation deep sleep to an empty world void of human life. As such this is an optional look into what happens in the periphery of the main project of Sabled Sun.
+  ", "não tem pra onde ir", 
 "Esses doces nunca vão sair daqui")
 
 c = 0
@@ -115,6 +116,7 @@ else {
 
 //Detecta se o player está próximo o bastante para iniciar um diálogo
 interabox_debug(32);
+
 
 </string>
           </argument>
