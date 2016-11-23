@@ -10,3 +10,5 @@ else {
 }
 draw_rectangle(x-argument0,y-argument0,x+argument0,y+argument0,false)
 draw_set_alpha(1)
+
+

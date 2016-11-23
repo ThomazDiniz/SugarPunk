@@ -31,13 +31,57 @@
 //mas já que só tem um npc até agora, vou deixar aqui
 inicializa_npc("Donovan","spr_npc_idle","spr_npc_move");
 
-falas = ds_list_create()
+//Cria um array de listas que podem ou não serem usadas
+//O número máximo é opcional, é o excesso será deletado de qualquer forma (cheque o alarm[0])
+max_dialogos = 8
 
-ds_list_add(falas,"Sabled Sun - Signals, is a series of space ambient works that portrays signals that the protagonist from the albums 2145, 2146 and 2147 finds on his journey to find out what happened to humanity after waking up from hibernation deep sleep to an empty world void of human life. As such this is an optional look into what happens in the periphery of the main project of Sabled Sun.
-  ", "não tem pra onde ir", 
-"Esses doces nunca vão sair daqui")
+for (i = 0; i &lt; max_dialogos; i++) {
+    falas[i] = ds_list_create()
+}
 
+//Alarme para tirar o excesso
+alarm[0] = 1
+
+//Isso também vai pro creation code
+ds_list_add(falas[0],"Sabled Sun - Signals, is a series of space ambient works that portrays signals that the protagonist from the albums 2145, 2146 and 2147 finds on his journey to find out what happened to humanity after", 
+"waking up from hibernation deep sleep to an empty world void of human life. As such this is an optional look into what happens in the periphery of the main project of Sabled Sun.")
+
+ds_list_add(falas[1],"Common law (do inglês direito comum) é o direito que se desenvolveu em certos países por meio das decisões dos tribunais, e não mediante atos legislativos ou executivos. Constitui portanto um sistema ou família do direito,", "diferente da família romano-germânica do direito, que enfatiza os atos legislativos. ")
+
+//Isso não
 c = 0
+
+texto = noone
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Deleta o excesso
+//Coloquei num alarm porque tenho quase certeza que
+//o creation code vem depois do Create
+for (i = 0; i &lt; max_dialogos; i++) {
+    if ds_list_empty(falas[i]) {
+        ds_list_destroy(falas[i]);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -65,30 +109,45 @@ c = 0
 
 var interage_butao = obj_player.primaria_clica or obj_player.secundaria_clica;
 
-obj_player.intera = interabox(32)
-
 if interabox(32) {
     if interage_butao {
+        var lista = falas[global.donovan];
         //finalmente matematica discreta serviu pra alguma coisa
         olha = (obj_player.olha + 2) mod 4
-        if !instance_exists(obj_texto) {
-            cria_texto(50,view_hview-50,falas[| c++],c_gray,c_white,nome);
+        if !instance_exists(texto) {
+            //Testa se o player estará sobreposto pela dialogbox
+            var yy;
+            if obj_player.y - view_yview &gt; 3*view_hview/4 {
+                yy = 0
+            }
+            else {
+                yy = 3*view_hview/4
+            }
+                texto = cria_texto(50,yy,lista[| c++],c_gray,c_white,nome);
+            
         }
         else {
-            obj_texto.str = falas[| c++];
-            obj_texto.written = "";
-            obj_texto.pos = 1;
+            if texto.str == texto.written {
+                texto.str = lista[| c++];
+                texto.written = "";
+                texto.pos = 1;
+                texto.alarm[0] = 1
+            }
+            else {
+                texto.written = texto.str;
+                texto.alarm[0] = -1
+            }
             
-            if c &gt; ds_list_size(falas) {
+            if c &gt; ds_list_size(falas[global.donovan]) {
                 c = 0
-                with obj_texto {instance_destroy();}
+                with texto {instance_destroy();}
             }
         }
     }
 }
 else {
     c = 0
-    with obj_texto {instance_destroy();}
+    with texto {instance_destroy();}
 }
 </string>
           </argument>
@@ -116,6 +175,10 @@ else {
 
 //Detecta se o player está próximo o bastante para iniciar um diálogo
 interabox_debug(32);
+
+
+
+
 
 
 </string>
