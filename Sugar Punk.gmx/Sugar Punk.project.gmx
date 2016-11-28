@@ -105,6 +105,8 @@
       <sprite>sprites\spr_hud_espada</sprite>
       <sprite>sprites\spr_hud_invi</sprite>
       <sprite>sprites\spr_hud_sel</sprite>
+      <sprite>sprites\spr_hud_sbutton</sprite>
+      <sprite>sprites\spr_hud_dbutton</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>

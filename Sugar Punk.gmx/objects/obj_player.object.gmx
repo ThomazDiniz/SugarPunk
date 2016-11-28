@@ -498,6 +498,14 @@ for (i = 0; i &lt; 2; i++) {
     draw_sprite(spr_hud_sel,0,view_wview-100-90*i,70);
 }
 
+//Desenha os botoões
+
+var ww = sprite_get_width(spr_hud_sel)/2;
+var hh = sprite_get_height(spr_hud_sel)/2;
+
+draw_sprite(spr_hud_sbutton,0,view_wview-190+ww,70+hh);
+draw_sprite(spr_hud_dbutton,0,view_wview-100+ww,70+hh);
+
 //Desenha as habilidades selecionadas
 draw_sprite(sele_hud(primaria),0,view_wview-190,70);
 draw_sprite(sele_hud(secundaria),0,view_wview-100,70);
