@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>inicializa_objeto();
+ativo = true;
 </string>
           </argument>
         </arguments>

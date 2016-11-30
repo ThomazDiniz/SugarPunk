@@ -106,9 +106,6 @@ with(pai){
     //Troca
     troca_primaria = other.troca_primaria;
     troca_secundaria = other.troca_secundaria;
-
-
-
 }
 
 </string>
