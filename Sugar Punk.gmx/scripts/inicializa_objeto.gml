@@ -46,6 +46,8 @@
     
     //vida
     vida = 10; //vida irreal
+    vida_max = 12;
+    
     
     //Mosquete   
     mirando = false;

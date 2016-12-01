@@ -301,6 +301,42 @@ player_troca_arma();
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch(async_load[? "event_type"]){
+    case "gamepad discovered":
+        var msg = instance_create(view_wview/2,view_hview/2,obj_gamepad_msg);
+        msg.str = "Gamepad Conectado ^^ XD LOL";
+        cria_controle_gamepad(async_load[? "pad_index"]);
+    break;
+    
+    case "gamepad lost":
+        var msg = instance_create(view_wview/2,view_hview/2,obj_gamepad_msg);
+        msg.str = "Gamepad Desconectado ^^ XD LOL kkkkkjjjjjkkjkkk";
+        destroi_gamepad();
+    break;
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
@@ -456,9 +492,13 @@ var num;
 
 //Número de corações inteiros e a fração restante
 num = vida div 4;
+num_max = vida_max div 4;
 resto = vida mod 4;
 
 //Desenha ditos corações
+for (var i = 0;i&lt;num_max;i++){
+    draw_sprite(spr_vida_fundo,4,50 + 35*i,50);
+}
 for (i = 0; i &lt; num ; i++) {
     draw_sprite(spr_vida,4,50 + 35*i,50);
 }
@@ -471,44 +511,7 @@ draw_sprite(spr_vida,resto,50 + 35*num,50);
 //não adicione no obj_Teclado, é temporário
 if keyboard_check_pressed(ord('O')) {vida = clamp(0,80,vida-1);}
 if keyboard_check_pressed(ord('P')) {vida = clamp(0,80,vida+1);}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///HUD das skills
-
-//Desenha os quadrados
-for (i = 0; i &lt; 2; i++) {
-    draw_sprite(spr_hud_sel,0,view_wview-100-90*i,70);
-}
-
-//Desenha os botoões
-
-var ww = sprite_get_width(spr_hud_sel)/2;
-var hh = sprite_get_height(spr_hud_sel)/2;
-
-draw_sprite(spr_hud_sbutton,0,view_wview-190+ww,70+hh);
-draw_sprite(spr_hud_dbutton,0,view_wview-100+ww,70+hh);
-
-//Desenha as habilidades selecionadas
-draw_sprite(sele_hud(primaria),0,view_wview-190,70);
-draw_sprite(sele_hud(secundaria),0,view_wview-100,70);
+vida=clamp(vida,0,vida_max);
 </string>
           </argument>
         </arguments>

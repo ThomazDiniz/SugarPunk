@@ -3,6 +3,3 @@
 
 cria_controle()
 
-if gamepad_is_connected(0) {
-    cria_controle_gamepad()
-}

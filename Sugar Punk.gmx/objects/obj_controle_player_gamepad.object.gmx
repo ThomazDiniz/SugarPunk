@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Controles</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>inicializa_objeto();
+controle_ativa();
+pad = 0;
 </string>
           </argument>
         </arguments>
@@ -52,37 +54,41 @@
 dir = 0;
 cim = 0;
 
-if abs(gamepad_axis_value(0,gp_axislh)) &gt; 0.2{
-    dir = gamepad_axis_value(0,gp_axislh);
+if abs(gamepad_axis_value(pad,gp_axislh)) &gt; 0.2{
+    dir = gamepad_axis_value(pad,gp_axislh);
 }
-if abs(gamepad_axis_value(0,gp_axislv)) &gt; 0.2{
-    cim = gamepad_axis_value(0,gp_axislv);
+if abs(gamepad_axis_value(pad,gp_axislv)) &gt; 0.2{
+    cim = gamepad_axis_value(pad,gp_axislv);
 }
 
-if gamepad_button_check(0,gp_padl){dir--}
-if gamepad_button_check(0,gp_padr){dir++;}
-if gamepad_button_check(0,gp_padu){cim--;}
-if gamepad_button_check(0,gp_padd){cim++;}
+if gamepad_button_check(pad,gp_padl){dir--}
+if gamepad_button_check(pad,gp_padr){dir++;}
+if gamepad_button_check(pad,gp_padu){cim--;}
+if gamepad_button_check(pad,gp_padd){cim++;}
 
-pula = gamepad_button_check_pressed(0,gp_face1);
-pulando =  gamepad_button_check(0,gp_face1);
-dash = gamepad_button_check_pressed(0,gp_face2);
-dashando =  gamepad_button_check(0,gp_face2);
+pula = gamepad_button_check_pressed(pad,gp_face1);
+pulando =  gamepad_button_check(pad,gp_face1);
+dash = gamepad_button_check_pressed(pad,gp_face2);
+dashando =  gamepad_button_check(pad,gp_face2);
 
 
 
 //Primario e secundario
-primaria_clica = gamepad_button_check_pressed(0,gp_face3);
-primaria_segura = gamepad_button_check(0,gp_face3);
-primaria_solta = gamepad_button_check_released(0,gp_face3);
-secundaria_clica = gamepad_button_check_pressed(0,gp_face4);
-secundaria_segura = gamepad_button_check(0,gp_face4);
-secundaria_solta = gamepad_button_check_released(0,gp_face4);
+primaria_clica = gamepad_button_check_pressed(pad,gp_face3);
+primaria_segura = gamepad_button_check(pad,gp_face3);
+primaria_solta = gamepad_button_check_released(pad,gp_face3);
+secundaria_clica = gamepad_button_check_pressed(pad,gp_face4);
+secundaria_segura = gamepad_button_check(pad,gp_face4);
+secundaria_solta = gamepad_button_check_released(pad,gp_face4);
 
 //Troca
-troca_primaria = gamepad_button_check_pressed(0,gp_shoulderl);
-troca_secundaria = gamepad_button_check_pressed(0,gp_shoulderr);
+troca_primaria = gamepad_button_check_pressed(pad,gp_shoulderl);
+troca_secundaria = gamepad_button_check_pressed(pad,gp_shoulderr);
+if dir != 0 || cim !=0 ||pula ||dash || primaria_clica ||troca_primaria||troca_secundaria{
+    controle_ativa();
+}
 
+if !ativo{exit;}
 
 //Se precisar passar esses botoes para outro objeto eh mais facil e deixa o player mais limpo:
 with(pai){
@@ -108,6 +114,66 @@ with(pai){
     troca_secundaria = other.troca_secundaria;
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HUD das skills
+if !ativo{exit;}
+
+//Desenha os quadrados
+for (i = 0; i &lt; 2; i++) {
+    draw_sprite(spr_hud_sel,0,view_wview-100-90*i,70);
+}
+
+//Desenha os botoões
+
+var ww = sprite_get_width(spr_hud_sel)/2;
+var hh = sprite_get_height(spr_hud_sel)/2;
+
+var px = view_wview-190+ww;
+var py = 70+hh;
+draw_sprite(spr_hud_genericgp,0,px,py);
+draw_text(px,py,"X");
+draw_text(px-ww,py-80,"LB");
+
+
+px = view_wview-100+ww;
+py = 70+hh;
+draw_sprite(spr_hud_genericgp,0,px,py);
+draw_text(px,py,"Y");
+draw_text(px-ww,py-80,"RB");
+
+px=view_wview-300;
+draw_sprite(spr_hud_genericgp,0,px,py);
+draw_text(px,py,"A");
+
+px=view_wview-400;
+draw_sprite(spr_hud_genericgp,0,px,py);
+draw_text(px,py,"B");
+
+
+//Desenha as habilidades selecionadas
+draw_sprite(sele_hud(obj_player.primaria),0,view_wview-190,70);
+draw_sprite(sele_hud(obj_player.secundaria),0,view_wview-100,70);
 </string>
           </argument>
         </arguments>

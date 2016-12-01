@@ -103,11 +103,14 @@
         <sprite>sprites\spr_hud_espada</sprite>
         <sprite>sprites\spr_hud_invi</sprite>
         <sprite>sprites\spr_hud_sel</sprite>
-        <sprite>sprites\spr_hud_sbutton</sprite>
-        <sprite>sprites\spr_hud_dbutton</sprite>
-        <sprite>sprites\spr_hud_abutton</sprite>
-        <sprite>sprites\spr_hud_button_generic1</sprite>
-        <sprite>sprites\spr_hud_button_generic2</sprite>
+        <sprites name="Botoes">
+          <sprite>sprites\spr_hud_dbutton</sprite>
+          <sprite>sprites\spr_hud_genericgp</sprite>
+          <sprite>sprites\spr_hud_abutton</sprite>
+          <sprite>sprites\spr_hud_button_generic2</sprite>
+          <sprite>sprites\spr_hud_button_generic1</sprite>
+          <sprite>sprites\spr_hud_sbutton</sprite>
+        </sprites>
         <sprite>sprites\spr_hudspacebutton</sprite>
       </sprites>
       <sprite>sprites\spr_vida_fundo</sprite>
@@ -158,6 +161,8 @@
     <scripts name="Controles">
       <script>scripts\cria_controle_ext.gml</script>
       <script>scripts\cria_controle_gamepad.gml</script>
+      <script>scripts\destroi_gamepad.gml</script>
+      <script>scripts\controle_ativa.gml</script>
       <script>scripts\cria_controle.gml</script>
     </scripts>
     <scripts name="Diversos">
@@ -203,7 +208,9 @@
       <object>objects\ef_explosao</object>
     </objects>
     <objects name="Controles">
+      <object>objects\Controles</object>
       <object>objects\obj_controle_player_teclado</object>
+      <object>objects\obj_gamepad_msg</object>
       <object>objects\obj_controle_player_gamepad</object>
     </objects>
     <objects name="Colisores">

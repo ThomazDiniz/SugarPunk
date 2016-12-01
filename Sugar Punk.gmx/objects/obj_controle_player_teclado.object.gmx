@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>Controles</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>inicializa_objeto();
-ativo = true;
+    controle_ativa();
 </string>
           </argument>
         </arguments>
@@ -50,6 +50,8 @@ ativo = true;
           <argument>
             <kind>1</kind>
             <string>///Codigo dos controles
+
+
 dir = 0;
 cim = 0;
 
@@ -77,6 +79,11 @@ secundaria_solta = keyboard_check_released(ord('D'));
 troca_primaria = keyboard_check_pressed(ord('W'));
 troca_secundaria = keyboard_check_pressed(ord('E'));
 
+if dir != 0 || cim !=0 ||pula ||dash || primaria_clica ||troca_primaria||troca_secundaria{
+    with(Controles){ativo = false;}
+    ativo = true;
+}
+if !ativo{exit;}
 
 //Se precisar passar esses botoes para outro objeto eh mais facil e deixa o player mais limpo:
 with(pai){
@@ -131,6 +138,54 @@ if keyboard_check(ord("A")){dashando =  true;}*/
 //bater = keyboard_check_pressed(ord('S'));
 //bater_direct = keyboard_check(ord('S'));
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///HUD das skills
+if !ativo{exit;}
+
+//Desenha os quadrados
+for (i = 0; i &lt; 2; i++) {
+    draw_sprite(spr_hud_sel,0,view_wview-100-90*i,70);
+}
+
+//Desenha os botoões
+
+var ww = sprite_get_width(spr_hud_sel)/2;
+var hh = sprite_get_height(spr_hud_sel)/2;
+
+draw_sprite(spr_hud_sbutton,0,view_wview-190+ww,70+hh);
+draw_sprite(spr_hud_button_generic2,0,view_wview-500+ww,70+hh);
+draw_sprite(spr_hud_button_generic1,0,view_wview-350+ww,70+hh);
+draw_sprite(spr_hud_button_generic1,0,view_wview-100,20);
+draw_sprite(spr_hud_button_generic1,0,view_wview-190,20);
+draw_text(view_wview-100,20,"E");
+draw_text(view_wview-190,20,"W");
+
+draw_sprite(spr_hud_dbutton,0,view_wview-100+ww,70+hh);
+
+//Desenha as habilidades selecionadas
+draw_sprite(sele_hud(obj_player.primaria),0,view_wview-190,70);
+draw_sprite(sele_hud(obj_player.secundaria),0,view_wview-100,70);
 </string>
           </argument>
         </arguments>
