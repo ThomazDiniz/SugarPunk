@@ -74,7 +74,6 @@
     <instance objName="obj_parede" x="768" y="128" name="inst_5D59EE93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_parede" x="800" y="128" name="inst_E7425BBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dummy" x="352" y="128" name="inst_6C34B47B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_camera" x="32" y="96" name="inst_6890309C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dummy" x="608" y="256" name="inst_9C92D1A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dummy" x="160" y="384" name="inst_B8771AD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dummy" x="640" y="448" name="inst_FDEA08A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -90,6 +89,7 @@
     <instance objName="obj_limite" x="2080" y="608" name="inst_FBD6D12A" locked="0" code="" scaleX="9.5" scaleY="9.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_npc" x="1152" y="704" name="inst_164D0963" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_npc" x="1088" y="96" name="inst_A6751FC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_camera" x="0" y="128" name="inst_4012C932" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
