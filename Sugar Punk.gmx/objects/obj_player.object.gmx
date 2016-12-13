@@ -30,7 +30,7 @@ cria_controle_ext();
 player_inicializa_armas();
 cria_hitbox();
 inicializa_sala_player();
-instance_create(0,0,obj_camera)
+instance_create(0,0,obj_camera);
 //Contador que define quantos steps são necessários pra dar o ataque pesado
 carrega_max = 100;
 carrega = carrega_max;

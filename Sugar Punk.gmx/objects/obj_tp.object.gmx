@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>sala = room;
+rm = room;
 idd = 0;
 desativado = false;
 </string>
