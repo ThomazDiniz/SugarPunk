@@ -257,8 +257,18 @@
   </objects>
   <rooms name="rooms">
     <rooms name="Fase1">
-      <room>rooms\rm_stg1_h1</room>
-      <room>rooms\rm_stg1_vila</room>
+      <rooms name="Vila1">
+        <room>rooms\rm_stg1_h1</room>
+        <room>rooms\rm_stg1_vila</room>
+        <room>rooms\rm_stg1_h2</room>
+        <room>rooms\rm_stg1_h3</room>
+      </rooms>
+      <rooms name="Vila2">
+        <room>rooms\rm_stg1_vila2</room>
+        <room>rooms\rm_stg1_h4</room>
+        <room>rooms\rm_stg1_h5</room>
+        <room>rooms\rm_stg1_h6</room>
+      </rooms>
     </rooms>
     <rooms name="ToyBox">
       <room>rooms\rm_toybox</room>
