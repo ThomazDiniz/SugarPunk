@@ -1,2 +1,3 @@
 ///pai_nao_existe();
-if (pai == -1||!instance_exists(pai)){instance_destroy();}
+if (pai == -1||!instance_exists(pai)){instance_destroy();return true;}
+return false;

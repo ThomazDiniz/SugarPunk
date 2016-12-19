@@ -102,19 +102,76 @@ mask_index = pai.sprite_index;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Checa se o attackmask não é do objeto pai
-if ((ultimoAtaque == -1) || !instance_exists(ultimoAtaque)){podeTomarDano=true;}
-if ((other.pai != pai) &amp;&amp; (podeTomarDano)){
-    pai.Estado = Dano;
-    dano = instance_create(x,y,ef_dano);
-    dano.pai = pai;
-    dano.depth = pai.depth-1;
-    audio_play_sound(snd_enemyhit,0,0)
-    
-    //Alarme para não criar um milhão de ef_danos
-    podeTomarDano = false;
-    ultimoAtaque = other.id;
-} 
+            <string>hitbox_hit(other.id,1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_tiro">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hitbox_hit(other.id,1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_tiro2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hitbox_hit(other.id,3);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_tiro3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hitbox_hit(other.id,5);
 </string>
           </argument>
         </arguments>

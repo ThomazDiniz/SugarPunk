@@ -31,8 +31,7 @@ cria_hitbox();
 //Inicializando a AI
 alarm[0] = 5;
 
-
-
+vida = 3;
 </string>
           </argument>
         </arguments>
@@ -56,17 +55,14 @@ alarm[0] = 5;
           <argument>
             <kind>1</kind>
             <string>///Quase uma AI
-
-randomize();
-
 switch Estado {
-
     case Dano:
         sp = 0;
         dir = 0;
         cim = 0;
     break;
-    
+    case Ataca:case Atacando: case Segue:
+    break;
     default:
         if irandom(100) &lt; 25 {
             sp = choose(0,1,1,1);
@@ -83,6 +79,44 @@ switch Estado {
 
 alarm[0] = 10;
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Movimentação AI Padrão Aleatoria
+switch(Estado){
+    case Ataca:case Atacando: case Segue:
+    break;
+    
+    default:
+        vx+=dir;
+        vy+=cim;
+        vx = clamp(vx,-2,2);
+        vy = clamp(vy,-2,2);
+        vx*=0.8;
+        vy*=0.8;
+}
+
+movimenta_geral(vx,vy);
+depth_atualiza();
 </string>
           </argument>
         </arguments>
@@ -105,53 +139,20 @@ alarm[0] = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Movimentação
-
-vx+=dir;
-vy+=cim;
-vx = clamp(vx,-2,2);
-vy = clamp(vy,-2,2);
-vx*=0.8;
-vy*=0.8;
-
-movimenta_geral(vx,vy);
-
-
-depth_atualiza();
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Estados
 
 switch Estado {
 
     case Parado:
-    if dir != 0 || cim != 0 {
-        Estado = Anda;
-    }
+        if dir != 0 || cim != 0 {
+            Estado = Anda;
+        }
     break;
     
     case Anda:
-    if dir == 0 &amp;&amp; cim == 0 {
-        Estado = Parado;
-    }
+        if dir == 0 &amp;&amp; cim == 0 {
+            Estado = Parado;
+        }
     break;
     
     case Dano:
@@ -189,19 +190,21 @@ speed *= 0.9;
             <string>///Desenha sprite
 
 image_speed = 0.3;
-define_dir();
 
 switch Estado {
 
     case Parado:
+        define_dir();
         auto_dir("spr_dummy");
     break;
     
     case Anda:
+        define_dir();
         auto_dir("spr_dummy_move");
     break;
     
     case Dano:
+        define_dir();
         auto_dir("spr_dummy");
     break;
 

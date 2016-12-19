@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>image_alpha = 0.3
 image_speed = 0.2
-
+pai = -1;
 //trava_tela(5);
 </string>
           </argument>
@@ -52,11 +52,11 @@ image_speed = 0.2
           <argument>
             <kind>1</kind>
             <string>///Acompanha o obj pai
-
-x = pai.x
-y = pai.y
-
-depth = pai.depth-5
+if (!pai_nao_existe()){
+    x = pai.x
+    y = pai.y
+    depth = pai.depth-5
+}
 </string>
           </argument>
         </arguments>
@@ -81,8 +81,11 @@ depth = pai.depth-5
             <kind>1</kind>
             <string>instance_destroy();
 
+
 //Retorna o objeto pai ao estado normal
-pai.Estado = Parado
+if (!pai_nao_existe()){
+    pai.Estado = Parado
+}
 </string>
           </argument>
         </arguments>

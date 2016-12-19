@@ -195,7 +195,11 @@
     </scripts>
     <script>scripts\get_dir.gml</script>
     <script>scripts\cria_attack_mask.gml</script>
+    <script>scripts\hitbox_hit.gml</script>
+    <script>scripts\inimigo_segue_set_dir.gml</script>
     <script>scripts\cria_hitbox.gml</script>
+    <script>scripts\direcao_get_dir.gml</script>
+    <script>scripts\inimigo_morre.gml</script>
     <script>scripts\debuga_estado.gml</script>
     <script>scripts\player_nos_limites_da_view.gml</script>
     <script>scripts\sele_hud.gml</script>
@@ -248,9 +252,12 @@
       <object>objects\obj_zenny</object>
       <object>objects\obj_hud_coleta</object>
     </objects>
+    <objects name="Inimigos">
+      <object>objects\obj_hitbox</object>
+      <object>objects\obj_dummy</object>
+      <object>objects\obj_soldier</object>
+    </objects>
     <object>objects\obj_attackmask</object>
-    <object>objects\obj_dummy</object>
-    <object>objects\obj_hitbox</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_npc</object>
     <object>objects\obj_texto</object>
@@ -278,7 +285,9 @@
       <room>rooms\rm_test4</room>
     </rooms>
   </rooms>
-  <constants number="16">
+  <constants number="18">
+    <constant name="Segue">13</constant>
+    <constant name="Atacando">12</constant>
     <constant name="Parado">0</constant>
     <constant name="Anda">1</constant>
     <constant name="Corre">2</constant>

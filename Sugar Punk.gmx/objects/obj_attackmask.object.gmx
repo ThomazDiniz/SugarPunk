@@ -30,6 +30,8 @@ alarm[1] = 1;
 
 //Destroi o objeto 
 alarm[0] = 10;
+
+dmg = 1;
 </string>
           </argument>
         </arguments>
@@ -77,10 +79,10 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>///Acompanha o objeto pai
-
-x = xx + pai.x;
-y = yy + pai.y;
-
+if !pai_nao_existe(){
+    x = xx + pai.x;
+    y = yy + pai.y;
+}
 </string>
           </argument>
         </arguments>
